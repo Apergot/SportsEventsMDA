@@ -5,18 +5,19 @@
 ### Angular ###
 ## Angular ##
 # compiled output
-dist/
-tmp/
-app/**/*.js
-app/**/*.js.map
+web/dist/
+web/tmp/
+web/app/**/*.js
+web/app/**/*.js.map
 
 # dependencies
-node_modules/
-bower_components/
+web/node_modules/
+web/bower_components/
 
 # IDEs and editors
-.idea/
-
+api/.idea/
+api/target/
+api/api.iml
 # misc
 .sass-cache/
 connect.lock/
@@ -27,8 +28,8 @@ testem.log
 typings/
 
 # e2e
-e2e/*.js
-e2e/*.map
+web/e2e/*.js
+web/e2e/*.map
 
 #System Files
 .DS_Store/
@@ -38,27 +39,27 @@ e2e/*.map
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+api/.idea/**/workspace.xml
+api/.idea/**/tasks.xml
+api/.idea/**/usage.statistics.xml
+api/.idea/**/dictionaries
+api/.idea/**/shelf
 
 # Generated files
-.idea/**/contentModel.xml
+api/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+api/.idea/**/dataSources/
+api/.idea/**/dataSources.ids
+api/.idea/**/dataSources.local.xml
+api/.idea/**/sqlDataSources.xml
+api/.idea/**/dynamic.xml
+api/.idea/**/uiDesigner.xml
+api/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+api/.idea/**/gradle.xml
+api/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -74,34 +75,34 @@ e2e/*.map
 cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+api/.idea/**/mongoSettings.xml
 
 # File-based project format
-*.iws
+api/*.iws
 
 # IntelliJ
-out/
+api/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+api/.idea_modules/
 
 # JIRA plugin
-atlassian-ide-plugin.xml
+api/atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+api/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+api/com_crashlytics_export_strings.xml
+api/crashlytics.properties
+api/crashlytics-build.properties
+api/fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+api/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+api/.idea/caches/build_file_checksums.ser
 
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
@@ -112,14 +113,14 @@ fabric.properties
 # *.ipr
 
 # Sonarlint plugin
-.idea/**/sonarlint/
+api/.idea/**/sonarlint/
 
 # SonarQube Plugin
-.idea/**/sonarIssues.xml
+api/.idea/**/sonarIssues.xml
 
 # Markdown Navigator plugin
-.idea/**/markdown-navigator.xml
-.idea/**/markdown-navigator/
+api/.idea/**/markdown-navigator.xml
+api/.idea/**/markdown-navigator/
 
 ### Java ###
 # Compiled class file
@@ -147,14 +148,14 @@ fabric.properties
 hs_err_pid*
 
 ### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+web/.vscode/*
+!web/.vscode/settings.json
+!web/.vscode/tasks.json
+!web/.vscode/launch.json
+!web/.vscode/extensions.json
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
-.history
+web/.history
 
 # End of https://www.gitignore.io/api/java,angular,intellij,visualstudiocode
