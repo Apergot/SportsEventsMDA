@@ -15,6 +15,7 @@ web/node_modules/
 web/bower_components/
 
 # IDEs and editors
+.idea
 api/.idea/
 api/target/
 api/api.iml
