@@ -160,3 +160,4 @@ web/.vscode/*
 web/.history
 
 # End of https://www.gitignore.io/api/java,angular,intellij,visualstudiocode
+api/src/main/resources/application.properties
