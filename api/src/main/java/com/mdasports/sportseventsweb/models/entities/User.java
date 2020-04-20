@@ -1,4 +1,4 @@
-package com.mdasports.sportseventsweb.models;
+package com.mdasports.sportseventsweb.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,4 +1,4 @@
-package com.mdasports.sportseventsweb.models;
+package com.mdasports.sportseventsweb.models.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
