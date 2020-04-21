@@ -35,4 +35,19 @@ public class UserRestController {
         Pageable pageable = PageRequest.of(page, 5);
         return iAdminUsersService.findAll(pageable);
     }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            iAdminUsersService.findById(id);
+            iAdminUsersService.delete(id);
+        } catch (DataAccessException e) {
+            map.put("message", "Error deleting user");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "user deleted successfully");
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 }

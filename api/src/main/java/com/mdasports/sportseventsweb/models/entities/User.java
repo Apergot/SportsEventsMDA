@@ -1,6 +1,7 @@
 package com.mdasports.sportseventsweb.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -30,8 +31,8 @@ public class User implements Serializable {
     @Column(unique=true)
     private String email;
 
-    //@NotNull(message = "roles can not be empty")
-    @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @NotNull(message = "roles can not be empty")
+    @ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH})
     @JoinTable(uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","roles_id"})})
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Role> roles;
