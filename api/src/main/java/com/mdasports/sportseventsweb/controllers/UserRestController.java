@@ -48,11 +48,38 @@ public class UserRestController {
             return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
         }
         if (user == null) {
-            map.put("message", "User id ".concat(id.toString()).concat("user does not exists"));
+            map.put("message", "User id ".concat(id.toString()).concat("does not exists"));
             return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
 
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<?> create(@Valid @RequestBody User user, BindingResult result) {
+
+        User newUser = null;
+        Map<String, Object> map = new HashMap<>();
+
+        if (result.hasErrors()) {
+            List<String> errors = new ArrayList<>();
+            for (FieldError err: result.getFieldErrors()) {
+                errors.add(err.getDefaultMessage());
+            }
+            map.put("error", errors);
+            return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            newUser = iAdminUsersService.save(user);
+        } catch (DataAccessException e) {
+            map.put("message", "Error inserting into database");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "User has been created successfully");
+        map.put("user", newUser);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
 
