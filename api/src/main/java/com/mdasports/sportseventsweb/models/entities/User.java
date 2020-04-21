@@ -15,11 +15,11 @@ public class User implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "can not be empty")
+    @NotNull(message = "username can not be empty")
     @Column(unique=true,length=15)
     private String username;
 
-    @NotNull(message = "can not be empty")
+    @NotNull(message = "password can not be empty")
     @Column(length=60)
     private String password;
 
@@ -30,7 +30,7 @@ public class User implements Serializable {
     @Column(unique=true)
     private String email;
 
-    @NotNull(message = "can not be empty")
+    //@NotNull(message = "roles can not be empty")
     @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinTable(uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","roles_id"})})
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
