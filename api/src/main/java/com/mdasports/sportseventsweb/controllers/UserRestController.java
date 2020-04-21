@@ -37,11 +37,28 @@ public class UserRestController {
         return iAdminUsersService.findAll(pageable);
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<?> show(@PathVariable Long id){
+        User user = null;
+        Map<String, Object> map = new HashMap<>();
+        try {
+            user = iAdminUsersService.findById(id);
+        } catch (DataAccessException e) {
+            map.put("message", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
+        }
+        if (user == null) {
+            map.put("message", "User id ".concat(id.toString()).concat("does not exists"));
+            return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
+
+    }
+
     @DeleteMapping("/users/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Map<String, Object> map = new HashMap<>();
         try {
-            iAdminUsersService.findById(id);
             iAdminUsersService.delete(id);
         } catch (DataAccessException e) {
             map.put("message", "Error deleting user");
@@ -51,4 +68,5 @@ public class UserRestController {
         map.put("message", "user deleted successfully");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
 }
