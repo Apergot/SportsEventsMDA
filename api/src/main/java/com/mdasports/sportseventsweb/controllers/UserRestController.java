@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -82,5 +83,42 @@ public class UserRestController {
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
+    @PutMapping("/users/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody User user, @PathVariable Long id, BindingResult result) {
 
+        User currentUser = iAdminUsersService.findById(id);
+        Map<String, Object> map = new HashMap<>();
+
+        if (result.hasErrors()) {
+            List<String> errors = result.getFieldErrors()
+                    .stream()
+                    .map(err -> err.getDefaultMessage())
+                    .collect(Collectors.toList());
+            map.put("error", errors);
+            return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+        }
+
+        if (currentUser == null) {
+            map.put("message", "Could not edit user with id ".concat(id.toString()).concat(" this does not exists"));
+            return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
+        }
+
+        User updatedUser = null;
+        try {
+            currentUser.setUsername(user.getUsername());
+            currentUser.setPassword(user.getPassword());
+            currentUser.setEnabled(user.isEnabled());
+            currentUser.setFirstname(user.getFirstname());
+            currentUser.setLastname(user.getLastname());
+            currentUser.setEmail(user.getEmail());
+            updatedUser = iAdminUsersService.save(currentUser);
+        } catch (DataAccessException e) {
+            map.put("message", "Error updating client data");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "user updated successfully");
+        map.put("user", updatedUser);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
+    }
 }
