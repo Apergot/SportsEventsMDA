@@ -34,7 +34,6 @@ public class User implements Serializable {
 
     @NotNull(message = "roles can not be empty")
     @ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.DETACH})
-    //@JoinTable(uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","roles_id"})})
     @JoinTable(uniqueConstraints={@UniqueConstraint(columnNames ={"user_id","roles_id"})})
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Role> roles;
