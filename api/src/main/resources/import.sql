@@ -3,7 +3,6 @@ INSERT INTO users (username, password, enabled, firstname, lastname, email) VALU
 INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('Hawk', '1q2w3e4R:.', 1, 'Diego', 'Hawkins', 'hawk@mail.xd');
 INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('OKai', '1q2w3e4R:.', 1, 'Miguel', 'Berciano', 'okai@mail.xd');
 INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('JuanKevinTR', '1q2w3e4R:.', 1, 'Juan Kevin', 'Trujillo', 'juankevin@mail.xd');
-INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('Peter', '1q2w3e4R:.', 1, 'Peter Pan', 'Adero', 'PETER@mail.xd');
 
 INSERT INTO roles (name) VALUES ('ROLE_USER');
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
