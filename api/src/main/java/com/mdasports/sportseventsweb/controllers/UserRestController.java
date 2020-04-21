@@ -113,12 +113,27 @@ public class UserRestController {
             currentUser.setEmail(user.getEmail());
             updatedUser = iAdminUsersService.save(currentUser);
         } catch (DataAccessException e) {
-            map.put("message", "Error updating client data");
+            map.put("message", "Error updating user data");
             map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         map.put("message", "user updated successfully");
         map.put("user", updatedUser);
         return new ResponseEntity<>(map, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        Map<String, Object> map = new HashMap<>();
+        try {
+            User user = iAdminUsersService.findById(id);
+            iAdminUsersService.delete(id);
+        } catch (DataAccessException e) {
+            map.put("message", "Error deleting user");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "user deleted successfully");
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
