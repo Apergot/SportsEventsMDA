@@ -1,96 +1,103 @@
 <ul class="alert alert-danger" *ngIf="errors?.length > 0">
-    <li *ngFor="let err of errors">
-        {{ err }}
-    </li>
+  <li *ngFor="let err of errors">
+    {{ err }}
+  </li>
 </ul>
 
-<div class="card bg-dark text-white">
-    <div class="card-header">{{ title }}</div>
-    <div class="card-body">
-        <form #userForm="ngForm">
-            <div class="form-group row">
-                <label for="username" class="col-form-label col-sm-2">Username</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="user.username" name="username"
-                        #username="ngModel">
-                    <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
-                        <div *ngIf="username.errors.required">
-                            Name is required
-                        </div>
-                        <div *ngIf="username.errors.minlength">
-                            Username length should be at least 4 characters
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
+<h3>{{ title }}</h3>
 
-                <label for="password" class="col-form-label col-sm-2">Password</label>
-                <div class="col-sm-6">
-                    <input type="password" class="form-control" [(ngModel)]="user.password" name="password"
-                        #password="ngModel">
-                    <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
-                        <div *ngIf="password.errors.required">
-                            Password is required
-                        </div>
-                        <div *ngIf="password.errors.minlength">
-                            Password length should be at least 4 characters
-                        </div>
-                    </div>
-                </div>
+<div class="card border-primary mb-3">
+  <div class="card-header">
+    <button class="btn btn-rounded btn-primary" [routerLink]="['/users']">Users list</button>
+  </div>
+
+  <div class="card-body text-primary">
+    <form #userForm="ngForm">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="firstname">Firstname</label>
+          <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname"
+                 [(ngModel)]="user.firstname" #firstname="ngModel" required>
+          <div class="alert-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+            <div *ngIf="firstname.errors.required">
+              Firstname is required
             </div>
-            <div class="form-group row">
-                <label for="firstname" class="col-form-label col-sm-2">Firstname</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname"
-                        #firstname="ngModel">
-                    <div class="alert alert-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
-                        <div *ngIf="firstname.errors.required">
-                            Firstname is required
-                        </div>
-                        <div *ngIf="firstname.errors.minlength">
-                            Firstname length should be at least 4 characters
-                        </div>
-                    </div>
-                </div>
+            <div *ngIf="firstname.errors.minlength">
+              Firstname length should be at least 4 characters
             </div>
-            <div class="form-group row">
-                <label for="lastname" class="col-form-label col-sm-2">Lastname</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastname"
-                        #lastname="ngModel">
-                    <div class="alert alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
-                        <div *ngIf="lastname.errors.required">
-                            Lastname is required
-                        </div>
-                        <div *ngIf="lastname.errors.minlength">
-                            Lastname length should be at least 4 characters
-                        </div>
-                    </div>
-                </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="lastname">Lastname</label>
+          <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname"
+                 [(ngModel)]="user.lastname" #lastname="ngModel" required>
+          <div class="alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+            <div *ngIf="lastname.errors.required">
+              Lastname is required
             </div>
-            <div class="form-group row">
-                <label for="email" class="col-form-label col-sm-2">Email</label>
-                <div class="col-sm-6">
-                    <input type="email" class="form-control" [(ngModel)]="user.email" name="email" #email="ngModel">
-                    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-                        <div *ngIf="email.errors.required">
-                            Email is required
-                        </div>
-                        <div *ngIf="email.errors.email">
-                            Email should have a valid format
-                        </div>
-                    </div>
-                </div>
+            <div *ngIf="lastname.errors.minlength">
+              Lastname length should be at least 4 characters
             </div>
-            <div class="text-center">
-                <button class="btn btn-primary px-5" role="button" (click)='create()' *ngIf="!user.id else elseBlock"
-                    [disabled]="!userForm.form.valid">Crear</button>
-                <ng-template #elseBlock>
-                    <button class="btn btn-primary px-5" role="button" (click)='update()'
-                        [disabled]="!userForm.form.valid">Update</button>
-                </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                 [(ngModel)]="user.username" #username="ngModel" required>
+          <div class="alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div *ngIf="username.errors.required">
+              Username is required
             </div>
-        </form>
-    </div>
+            <div *ngIf="username.errors.minlength">
+              Username length should be at least 4 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                 [(ngModel)]="user.email" #email="ngModel" required>
+          <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required">
+              Email is required
+            </div>
+            <div *ngIf="email.errors.email">
+              Email should have a valid format
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                 [(ngModel)]="user.password" #password="ngModel" required>
+          <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required">
+              Password is required
+            </div>
+            <div *ngIf="password.errors.minlength">
+              Password length should be at least 4 characters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn btn-success float-right px-5" role="button" (click)='create()' *ngIf="!user.id else elseBlock"
+                [disabled]="!userForm.form.valid">Create
+        </button>
+        <ng-template #elseBlock>
+          <button class="btn btn-success float-right px-5" role="button" (click)='update()'
+                  [disabled]="!userForm.form.valid">Update
+          </button>
+        </ng-template>
+      </div>
+    </form>
+  </div>
 </div>
+
