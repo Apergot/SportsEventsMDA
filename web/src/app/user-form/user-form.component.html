@@ -11,7 +11,7 @@
             <div class="form-group row">
                 <label for="username" class="col-form-label col-sm-2">Username</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="user.username" name="username"
+                    <input type="text" class="form-control" [(ngModel)]="user.username" id="username" name="username"
                         #username="ngModel">
                     <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
                         <div *ngIf="username.errors.required">
@@ -27,7 +27,7 @@
 
                 <label for="password" class="col-form-label col-sm-2">Password</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" [(ngModel)]="user.password" name="password"
+                    <input type="password" class="form-control" [(ngModel)]="user.password" id="password" name="password"
                         #password="ngModel">
                     <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
                         <div *ngIf="password.errors.required">
@@ -42,7 +42,7 @@
             <div class="form-group row">
                 <label for="firstname" class="col-form-label col-sm-2">Firstname</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname"
+                    <input type="text" class="form-control" [(ngModel)]="user.firstname" id="firstname" name="firstname"
                         #firstname="ngModel">
                     <div class="alert alert-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
                         <div *ngIf="firstname.errors.required">
@@ -57,7 +57,7 @@
             <div class="form-group row">
                 <label for="lastname" class="col-form-label col-sm-2">Lastname</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastname"
+                    <input type="text" class="form-control" [(ngModel)]="user.lastname" id="lastname" name="lastname"
                         #lastname="ngModel">
                     <div class="alert alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
                         <div *ngIf="lastname.errors.required">
@@ -72,7 +72,7 @@
             <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" class="form-control" [(ngModel)]="user.email" name="email" #email="ngModel">
+                    <input type="email" class="form-control" [(ngModel)]="user.email" id="email" name="email" #email="ngModel">
                     <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                         <div *ngIf="email.errors.required">
                             Email is required
