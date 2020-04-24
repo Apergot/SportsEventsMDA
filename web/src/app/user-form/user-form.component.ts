@@ -44,11 +44,7 @@ export class UserFormComponent implements OnInit {
     this.userService.create(this.user).subscribe(
       (user) => {
         this.router.navigate(["/users"]);
-        swal.fire(
-          "New user",
-          `User ${user.username} has been created successfully`,
-          "success"
-        );
+        swal.fire("New user", `User has been created successfully`, "success");
       },
       (err) => {
         this.errors = err.error.errors as string[];
@@ -64,7 +60,7 @@ export class UserFormComponent implements OnInit {
         this.router.navigate(["/users"]);
         swal.fire(
           "User updated",
-          `User ${user.username} has been updated successfully`,
+          `User has been updated successfully`,
           "success"
         );
       },

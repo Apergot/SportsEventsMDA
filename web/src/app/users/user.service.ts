@@ -53,7 +53,7 @@ export class UserService {
 
   update(user: User): Observable<User> {
     return this.http
-      .put<any>(`${this.urlEndPoint}/${user.id}`, user, {
+      .put<User>(`${this.urlEndPoint}/${user.id}`, user, {
         headers: this.httpHeaders,
       })
       .pipe(

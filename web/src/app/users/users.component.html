@@ -33,7 +33,7 @@
             <td>{{user.lastname}}</td>
             <td>{{user.email}}</td>
             <td>
-              <span *ngFor="let role of user.roles">{{role.name}} </span>
+              <span>{{displayRoles(user.roles)}} </span>
             <td>
               <button type="button" name="edit" class="btn btn-warning"
                 [routerLink]="['/users/form', user.id]">Edit</button>

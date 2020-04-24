@@ -24,10 +24,10 @@ export class UsersComponent implements OnInit {
 
     for (let i = 0; i < roles.length; i++) {
       if (roles[i].name == "ROLE_ADMIN") {
-        !isAdmin;
+        isAdmin = !isAdmin;
       }
       if (roles[i].name == "ROLE_USER") {
-        !isUser;
+        isUser = !isUser;
       }
     }
 
