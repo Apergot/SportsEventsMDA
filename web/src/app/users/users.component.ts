@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
     );
   }
 
+  
   delete( user: User ): void {
     swal
     .fire({
