@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../users/user';
 
 @Component({
   selector: 'app-login',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  user: User = null;
+  title = 'Login';
+
+  errors: string[];
 
   constructor() { }
 
