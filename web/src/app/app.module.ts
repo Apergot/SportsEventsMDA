@@ -9,6 +9,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./home/home.component";
 import { UsersComponent } from "./users/users.component";
 import { UserFormComponent } from "./user-form/user-form.component";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { UserFormComponent } from "./user-form/user-form.component";
     HomeComponent,
     UsersComponent,
     UserFormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
