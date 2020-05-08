@@ -14,6 +14,9 @@ import { SiteFooterComponent } from './_layout/site-footer/site-footer.component
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
+import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.component';
+import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     HomeComponent,
     UsersComponent,
     UserFormComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
+    AdminSidebarComponent,
   ],
   imports: [
     BrowserModule,
