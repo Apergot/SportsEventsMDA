@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: SiteLayoutComponent,
     children: [
-      { path: 'home', component: HomeComponent, pathMatch: 'full'}
+      { path: '', component: HomeComponent, pathMatch: 'full'}
     ]
   },
 
@@ -23,13 +23,17 @@ const routes: Routes = [
     path: '',
     component: AdminLayoutComponent,
     children: [
+      { path: 'users', component: UsersComponent },
+      { path: 'users/form', component: UserFormComponent },
+      { path: 'users/form/:id', component: UserFormComponent }
     ]
   },
 
-  // { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/form', component: UserFormComponent },
-  { path: 'users/form/:id', component: UserFormComponent },
+  // No layout routes
+  // LOGIN, REGISTER
+
+  // Otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
