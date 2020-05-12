@@ -16,7 +16,7 @@ public class Rivalry implements Serializable {
     private Long id;
 
     @NotNull(message = "rivalry can not be empty")
-    @Column(unique=true,length=15)
+    @Column(unique=true,length=60)
     private String rivalryname;
 
     @NotNull(message = "location can not be empty")
@@ -24,7 +24,10 @@ public class Rivalry implements Serializable {
     private String location;
 
     private int capacity;
+
+    @Temporal(TemporalType.DATE)
     private Date date_;
+
     private String description;
 
     public Long getId() {
@@ -35,7 +38,7 @@ public class Rivalry implements Serializable {
         this.id = id;
     }
 
-    public String getRilvaryname() {
+    public String getRivalryname() {
         return rivalryname;
     }
 
