@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Rivalry} from './rivalry';
+import {RivalryService} from './rivalry.service';
 
 @Component({
   selector: 'app-rivalries',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rivalries.component.css']
 })
 export class RivalriesComponent implements OnInit {
+  rivalries: Rivalry[];
 
-  constructor() { }
+  constructor(private rivalryService: RivalryService) {}
 
   ngOnInit(): void {
+    this.rivalryService.getRivalries().subscribe((rivalries) => (this.rivalries = rivalries));
   }
 
 }
