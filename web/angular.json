@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "web": {
@@ -25,12 +25,24 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/admin-lte/plugins/select2/css/select2.css",
+              "node_modules/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css",
+              "node_modules/admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.css",
+              "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
+              "node_modules/admin-lte/dist/css/adminlte.css",
               "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/admin-lte/plugins/select2/js/select2.js",
+              "node_modules/admin-lte/plugins/datatables/jquery.dataTables.js",
+              "node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js",
+              "node_modules/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.js",
+              "node_modules/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.js",
+              "node_modules/admin-lte/plugins/sweetalert2/sweetalert2.all.js",
+              "node_modules/admin-lte/dist/js/adminlte.js"
             ]
           },
           "configurations": {
