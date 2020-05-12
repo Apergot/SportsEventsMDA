@@ -17,6 +17,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
 import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.com
     AdminHeaderComponent,
     AdminFooterComponent,
     AdminSidebarComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

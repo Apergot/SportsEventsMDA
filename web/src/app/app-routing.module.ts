@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.compon
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
   // Site routes goes here
@@ -23,6 +24,7 @@ const routes: Routes = [
     path: '',
     component: AdminLayoutComponent,
     children: [
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'users', component: UsersComponent },
       { path: 'users/form', component: UserFormComponent },
       { path: 'users/form/:id', component: UserFormComponent }
