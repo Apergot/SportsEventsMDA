@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -26,17 +27,20 @@ public class UserRestController {
     @Autowired
     private IAdminUsersService iAdminUsersService;
 
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/users")
     public List<User> index(){
         return iAdminUsersService.findAll();
     }
 
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/users/page/{page}")
     public Page <User> index(@PathVariable Integer page){
         Pageable pageable = PageRequest.of(page, 5);
         return iAdminUsersService.findAll(pageable);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/users/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){
         User user = null;
@@ -82,6 +86,7 @@ public class UserRestController {
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @DeleteMapping("/users/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Map<String, Object> map = new HashMap<>();

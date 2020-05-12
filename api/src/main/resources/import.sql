@@ -1,8 +1,8 @@
-INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('SilentStorm', '1q2w3e4R:.', 1, 'Alejandro', 'Perdomo', 'someone@mail.xd');
-INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('admin', '1q2w3e4R:.', 1,'Alejandro', 'Perdomo', 'admin@mail.xd');
-INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('Hawk', '1q2w3e4R:.', 1, 'Diego', 'Hawkins', 'hawk@mail.xd');
-INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('OKai', '1q2w3e4R:.', 1, 'Miguel', 'Berciano', 'okai@mail.xd');
-INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('JuanKevinTR', '1q2w3e4R:.', 1, 'Juan Kevin', 'Trujillo', 'juankevin@mail.xd');
+INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('SilentStorm', '$2a$10$Q2BWjW7p/4Dnxsz1LaTj3O/N0L6mJ/mTH0Y2HT4JMZDByRE7DEdmy', 1, 'Alejandro', 'Perdomo', 'someone@mail.xd');
+INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('admin', '$2a$10$Q2BWjW7p/4Dnxsz1LaTj3O/N0L6mJ/mTH0Y2HT4JMZDByRE7DEdmy', 1,'Alejandro', 'Perdomo', 'admin@mail.xd');
+INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('Hawk', '$2a$10$Q2BWjW7p/4Dnxsz1LaTj3O/N0L6mJ/mTH0Y2HT4JMZDByRE7DEdmy', 1, 'Diego', 'Hawkins', 'hawk@mail.xd');
+INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('OKai', '$2a$10$Q2BWjW7p/4Dnxsz1LaTj3O/N0L6mJ/mTH0Y2HT4JMZDByRE7DEdmy', 1, 'Miguel', 'Berciano', 'okai@mail.xd');
+INSERT INTO users (username, password, enabled, firstname, lastname, email) VALUES ('JuanKevinTR', '$2a$10$Q2BWjW7p/4Dnxsz1LaTj3O/N0L6mJ/mTH0Y2HT4JMZDByRE7DEdmy', 1, 'Juan Kevin', 'Trujillo', 'juankevin@mail.xd');
 
 INSERT INTO roles (name) VALUES ('ROLE_USER');
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
