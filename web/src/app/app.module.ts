@@ -18,6 +18,7 @@ import { AdminHeaderComponent } from './_layout/admin-header/admin-header.compon
 import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RivalriesComponent } from './rivalries/rivalries.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AdminFooterComponent,
     AdminSidebarComponent,
     DashboardComponent,
+    RivalriesComponent,
   ],
   imports: [
     BrowserModule,
