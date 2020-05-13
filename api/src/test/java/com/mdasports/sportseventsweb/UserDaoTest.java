@@ -3,6 +3,7 @@ package com.mdasports.sportseventsweb;
 import com.mdasports.sportseventsweb.models.dao.IUserDao;
 import com.mdasports.sportseventsweb.models.entities.Role;
 import com.mdasports.sportseventsweb.models.entities.User;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,11 @@ public class UserDaoTest {
     @Autowired
     private IUserDao userDao;
 
-    @Test
-    public void whenFindByUsername_thenReturnUser() {
+    User apergot;
 
-        //given
-        User apergot = new User();
+    @Before
+    public void init(){
+        apergot = new User();
         apergot.setFirstname("Alejandro");
         apergot.setLastname("Perdomo");
         apergot.setUsername("Apergot");
@@ -44,11 +45,19 @@ public class UserDaoTest {
         apergot.setRoles(Arrays.asList(user_role, admin_role));
         entityManager.persist(apergot);
         entityManager.flush();
+    }
 
+    @Test
+    public void whenFindByUsername_thenReturnUser() {
         //when
         User found = userDao.findByUsername(apergot.getUsername());
 
         //then
         assertThat(found.getFirstname()).isEqualTo(apergot.getFirstname());
+        assertThat(found.getId()).isEqualTo(apergot.getId());
+        assertThat(found.getEmail()).isEqualTo(apergot.getEmail());
+        assertThat(found.getLastname()).isEqualTo(apergot.getLastname());
+        assertThat(found.getPassword()).isEqualTo(apergot.getPassword());
+        assertThat(found.getRoles()).isEqualTo(apergot.getRoles());
     }
 }
