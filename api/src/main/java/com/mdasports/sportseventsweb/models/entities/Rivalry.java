@@ -1,7 +1,5 @@
 package com.mdasports.sportseventsweb.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -46,9 +44,9 @@ public class Rivalry implements Serializable {
         this.rivalryname = rivalryname;
     }
 
-    public String getLocation(){
-        return this.location;
-    }
+    public String getLocation(){ return this.location; }
+
+    public void setLocation(String location){ this.location = location; }
 
     public int getCapacity(){
         return capacity;
@@ -69,6 +67,8 @@ public class Rivalry implements Serializable {
     public String getDescription() {
         return description;
     }
+
+    public void setDescription(String description){ this.description = description; }
 
     private static final long serialVersionUID = 1L;
 }

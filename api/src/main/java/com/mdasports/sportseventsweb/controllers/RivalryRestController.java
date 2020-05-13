@@ -1,7 +1,6 @@
 package com.mdasports.sportseventsweb.controllers;
 
 import com.mdasports.sportseventsweb.models.entities.Rivalry;
-import com.mdasports.sportseventsweb.models.entities.User;
 import com.mdasports.sportseventsweb.models.services.IAdminRivalriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -79,5 +78,19 @@ public class RivalryRestController {
         map.put("message", "Rivalry has been created successfully");
         map.put("rivalry", newRivalry);
         return new ResponseEntity<>(map, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/rivalries/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            iAdminRivalriesService.delete(id);
+        } catch (DataAccessException e) {
+            map.put("message", "Error deleting rivalry");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "rivalry has been deleted successfully");
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
