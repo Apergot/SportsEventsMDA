@@ -1,0 +1,119 @@
+<ul class="alert alert-danger" *ngIf="errors?.length > 0">
+  <li *ngFor="let err of errors">
+    {{ err }}
+  </li>
+</ul>
+
+<div class="w-50 mx-auto" style="width: 200px;">
+
+
+  <div class="card border-primary mb-3">
+    <div class="card-header text-center">
+      <h3>{{ title }}</h3>
+
+    </div>
+
+    <div class="card-body text-primary">
+      <form #userForm="ngForm">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+
+
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+              [(ngModel)]="user.username" #username="ngModel" required>
+            <div class="alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+              <div *ngIf="username.errors.required">
+                Username is required
+              </div>
+              <div *ngIf="username.errors.minlength">
+                Username length should be at least 4 characters
+              </div>
+            </div>
+          </div>
+
+
+          <div class="group col-md-6">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+              [(ngModel)]="user.password" #password="ngModel" required>
+              <small id="passwordHelpInline" class="text-muted">
+                Must be 8-20 characters long.
+              </small>
+            <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div *ngIf="password.errors.required">
+                Password is required
+              </div>
+              <div *ngIf="password.errors.minlength">
+                Password length should be at least 4 characters
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+            <label for="firstname">Firstname</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname"
+              [(ngModel)]="user.firstname" #firstname="ngModel" required>
+            <div class="alert-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+              <div *ngIf="firstname.errors.required">
+                Firstname is required
+              </div>
+              <div *ngIf="firstname.errors.minlength">
+                Firstname length should be at least 4 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lastname">Lastname</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname"
+              [(ngModel)]="user.lastname" #lastname="ngModel" required>
+            <div class="alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+              <div *ngIf="lastname.errors.required">
+                Lastname is required
+              </div>
+              <div *ngIf="lastname.errors.minlength">
+                Lastname length should be at least 4 characters
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="form-row col-md-6">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="user.email"
+            #email="ngModel" required>
+          <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required">
+              Email is required
+            </div>
+            <div *ngIf="email.errors.email">
+              Email should have a valid format
+            </div>
+          </div>
+        </div>
+
+
+        <div class="dropdown-divider"></div>
+        <div class="text-center"> 
+          <button class="btn btn-rounded btn-primary" type="button" routerLink="/">register</button>
+        </div>
+
+
+
+      </form>
+    </div>
+  </div>
+</div>

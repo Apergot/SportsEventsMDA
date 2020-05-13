@@ -1,0 +1,74 @@
+<ul class="alert alert-danger" *ngIf="errors?.length > 0">
+  <li *ngFor="let err of errors">
+    {{ err }}
+  </li>
+</ul>
+
+<div class="container">
+  <div class="w-50 mx-auto" style="width: 200px;">
+
+    <div class="card border-primary mb-3">
+      <div class="card-header text-center">
+        <h3>{{ title }}</h3>
+
+      </div>
+
+      <div class="card-body text-primary">
+
+        <form #userForm="ngForm" class="form-signin">
+          <div class="text-center">
+            <img class="mb-4 " src="./assets/logoSportsEvent.png" alt="logo de sports event" width="35%" height="35%">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group mx-auto">
+              <label for="">Username</label>
+              <input type="text" class="form-control" id="username" name="username" autofocus="" placeholder="Username"
+                [(ngModel)]="user.username" #username="ngModel" required>
+              <div class="alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                <div *ngIf="username.errors.required">
+                  Username is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mx-auto">
+              <label for="">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                [(ngModel)]="user.password" #password="ngModel" required>
+              <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors.required">
+                  Password is required
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  Password length should be at least 4 characters
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+          </div>
+
+
+
+          <div class="text-center">
+            <button class="btn btn-rounded btn-primary" type="button" routerLink="/">Sign in</button>
+          </div>
+
+        </form>
+
+        <div class="dropdown-divider"></div>
+        <div></div>
+        <div class="text-center">
+          <button class="btn btn-outline-info" type="button" routerLink="/register">New around here? Sign up</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>

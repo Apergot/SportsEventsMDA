@@ -8,13 +8,20 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
 
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+
+
 const routes: Routes = [
   // Site routes goes here
   {
     path: '',
     component: SiteLayoutComponent,
     children: [
-      { path: '', component: HomeComponent, pathMatch: 'full'}
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+      { path: '', component: HomeComponent, pathMatch: 'full' }
     ]
   },
 
@@ -34,10 +41,3 @@ const routes: Routes = [
 
   // Otherwise redirect to home
   { path: '**', redirectTo: '' }
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
