@@ -25,7 +25,7 @@ public class UserDaoTest {
     @Autowired
     private IUserDao userDao;
 
-    User apergot;
+    private User apergot;
 
     @Before
     public void init(){
