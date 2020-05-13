@@ -12,16 +12,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 
-
 const routes: Routes = [
   // Site routes goes here
   {
     path: '',
     component: SiteLayoutComponent,
     children: [
+      { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
-      { path: '', component: HomeComponent, pathMatch: 'full' }
+      { path: "register", component: RegisterComponent }
     ]
   },
 
@@ -40,4 +39,12 @@ const routes: Routes = [
   // LOGIN, REGISTER
 
   // Otherwise redirect to home
-  { path: '**', redirectTo: '' }]
+  { path: '**', redirectTo: '' }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+

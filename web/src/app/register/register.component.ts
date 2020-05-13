@@ -7,9 +7,9 @@ import { User } from '../users/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
+
   user: User = new User();
-  title = 'Create User';
+  title = 'Register';
 
   errors: string[];
   constructor() { }

@@ -39,7 +39,7 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Password"
               [(ngModel)]="user.password" #password="ngModel" required>
               <small id="passwordHelpInline" class="text-muted">
-                Must be 8-20 characters long.
+                Must be 4-20 characters long.
               </small>
             <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
               <div *ngIf="password.errors.required">
