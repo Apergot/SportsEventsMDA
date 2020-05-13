@@ -40,4 +40,4 @@ const routes: Routes = [
   // LOGIN, REGISTER
 
   // Otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' }]
