@@ -59,14 +59,4 @@ public class AdminUsersServiceImpIntegrationTest {
         Mockito.when(userDao.findById(apergot.getId()))
                 .thenAnswer(invocationOnMock -> apergot);
     }
-
-    /* Sprint 1 - 13/05/2020
-    @Test
-    public void whenValidId_thenEmployeeShouldBeFound() {
-        Long id = 10L;
-        User found = iAdminUsersServiceImp.findById(id);
-
-        assertThat(found.getId()).isEqualTo(null);
-    }
-    */
 }
