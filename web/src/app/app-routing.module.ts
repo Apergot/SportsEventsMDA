@@ -12,6 +12,7 @@ import {RivalriesComponent} from './rivalries/rivalries.component';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {RivalryFormComponent} from './rivalry-form/rivalry-form.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,8 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     children: [
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
     ]
   },
 
@@ -33,6 +34,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'rivalries', component: RivalriesComponent },
+      { path: 'rivalries/form', component: RivalryFormComponent },
       { path: 'users', component: UsersComponent },
       { path: 'users/form', component: UserFormComponent },
       { path: 'users/form/:id', component: UserFormComponent }

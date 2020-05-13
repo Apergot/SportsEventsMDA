@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { RivalriesComponent } from './rivalries/rivalries.component';
+import { RivalryFormComponent } from './rivalry-form/rivalry-form.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RivalriesComponent } from './rivalries/rivalries.component';
     UsersComponent,
     UserFormComponent,
     RivalriesComponent,
+    RivalryFormComponent,
   ],
   imports: [
     BrowserModule,
