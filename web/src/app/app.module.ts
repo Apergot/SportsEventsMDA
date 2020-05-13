@@ -20,7 +20,7 @@ import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.com
 import { UsersComponent } from "./users/users.component";
 import { UserFormComponent } from "./user-form/user-form.component";
 
-import { LoginComponent } from './login/login.component';
+
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({
@@ -36,7 +36,6 @@ import { RegisterComponent } from './register/register.component';
     AdminHeaderComponent,
     AdminFooterComponent,
     AdminSidebarComponent,
-    LoginComponent,
     RegisterComponent,
   ],
   imports: [
