@@ -24,7 +24,7 @@ public class Rivalry implements Serializable {
     private int capacity;
 
     @Temporal(TemporalType.DATE)
-    private Date date_;
+    private Date rivalrydate;
 
     private String description;
 
@@ -57,11 +57,11 @@ public class Rivalry implements Serializable {
     }
 
     public Date getDate(){
-        return date_;
+        return rivalrydate;
     }
 
-    public void setDate(Date date) {
-        this.date_ = date;
+    public void setDate(Date rivalrydate) {
+        this.rivalrydate = rivalrydate;
     }
 
     public String getDescription() {
