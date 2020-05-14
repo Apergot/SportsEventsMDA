@@ -41,4 +41,9 @@ public class AdminRivalryServiceImp implements IAdminRivalriesService{
     public void delete(Long id){
         rivalryAdminDao.deleteById(id);
     }
+    @Override
+    @Transactional
+    public Rivalry getRivalryByName(String name) {
+        return rivalryAdminDao.findByRivalryname(name);
+    }
 }
