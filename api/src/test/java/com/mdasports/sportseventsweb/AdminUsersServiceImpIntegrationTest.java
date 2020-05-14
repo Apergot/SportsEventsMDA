@@ -31,7 +31,7 @@ public class AdminUsersServiceImpIntegrationTest {
     }
 
     @Autowired
-    private IAdminUsersService iAdminUsersServiceImp;
+    private IAdminUsersService iAdminUsersService;
 
     @MockBean
     private IUserDao userDao;
@@ -56,8 +56,14 @@ public class AdminUsersServiceImpIntegrationTest {
         admin_role.setName("ROLE_ADMIN");
         apergot.setRoles(Arrays.asList(user_role, admin_role));
 
-        Mockito.when(userDao.findById(apergot.getId()))
+        Mockito.when(iAdminUsersService.getUserByUsername(apergot.getUsername()))
                 .thenAnswer(invocationOnMock -> apergot);
     }
-    /*Sprint 1 14-05-2020*/
+
+    @Test
+    public void whenValidName_thenUserShouldBeFound(){
+        String username = "Apergot";
+        User found = userDao.findByUsername(username);
+        assertThat(found.getUsername()).isEqualTo(username);
+    }
 }
