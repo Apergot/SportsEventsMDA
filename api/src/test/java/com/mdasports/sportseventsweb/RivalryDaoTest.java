@@ -32,13 +32,16 @@ public class RivalryDaoTest {
         example.setCapacity(1000);
         example.setDate(new Date());
         example.setRivalryname("Olimpic Games");
-        example.setId(30L);
-        entityManager.persist(example);
+        example.setId(1L);
+        example.setLocation("Las Palmas");
+        example.setDescription("Carrera de atletismo");
+        entityManager.merge(example);
         entityManager.flush();
     }
 
     @Test
     public void whenFindByRivalryname_thenReturnRivalry() {
+
         //when
         Rivalry found = rivalryDao.findByRivalryname(example.getRivalryname());
 

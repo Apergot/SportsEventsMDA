@@ -66,6 +66,14 @@ public class Rivalry implements Serializable {
         this.date_ = date;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getDescription() {
         return description;
     }
