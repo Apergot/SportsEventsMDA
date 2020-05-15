@@ -12,4 +12,5 @@ public interface IAdminUsersService {
     public User findById(Long id);
     public User save(User user);
     public void delete(Long id);
+    public User getUserByUsername(String name);
 }
