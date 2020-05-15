@@ -3,8 +3,7 @@ import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-site-header',
-  templateUrl: './site-header.component.html',
-  styleUrls: ['./site-header.component.html']
+  templateUrl: './site-header.component.html'
 })
 export class SiteHeaderComponent implements OnInit {
 

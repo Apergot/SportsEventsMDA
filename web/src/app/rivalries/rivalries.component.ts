@@ -5,8 +5,7 @@ import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rivalries',
-  templateUrl: './rivalries.component.html',
-  styleUrls: ['./rivalries.component.css']
+  templateUrl: './rivalries.component.html'
 })
 export class RivalriesComponent implements OnInit {
   rivalries: Rivalry[];

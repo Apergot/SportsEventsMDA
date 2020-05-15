@@ -8,8 +8,7 @@ declare const datepicker: any;
 
 @Component({
   selector: 'app-rivalry-form',
-  templateUrl: './rivalry-form.component.html',
-  styleUrls: ['./rivalry-form.component.css']
+  templateUrl: './rivalry-form.component.html'
 })
 export class RivalryFormComponent implements OnInit {
   rivalry: Rivalry = new Rivalry();

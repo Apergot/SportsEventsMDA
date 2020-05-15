@@ -7,8 +7,7 @@ import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css'],
+  templateUrl: './user-form.component.html'
 })
 export class UserFormComponent implements OnInit {
   user: User = new User();
