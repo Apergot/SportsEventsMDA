@@ -9,11 +9,11 @@
           <div class="card card-signin my-5">
 
             <div class="card-header text-center">
-              <b>Sign in</b> to start your session
+              <b>{{title}}</b> to start your session
             </div>
 
             <div class="card-body">
-              <form #userForm="ngForm">
+              <form #signInForm="ngForm">
                 <div class="input-group mb-3">
                   <input [(ngModel)]="user.username" type="email" class="form-control" name="username" id="username" placeholder="Username" autofocus required>
                   <div class="input-group-append">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <button type="submit" class="btn btn-primary btn-block" role="button" (click)='login()'>Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block" role="button" (click)='login()' [disabled]="!signInForm.form.valid">Sign In</button>
                   </div>
                 </div>
               </form>

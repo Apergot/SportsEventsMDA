@@ -28,7 +28,7 @@
         </div>
 
         <div class="card-body text-primary">
-          <form #userForm="ngForm">
+          <form #signUpForm="ngForm">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="firstname">Firstname</label>
@@ -104,7 +104,7 @@
             </div>
 
             <div>
-              <button class="btn btn-success float-right px-5" role="button" type="submit" routerLink="/">Sign up</button>
+              <button class="btn btn-success float-right px-5" role="button" type="submit" routerLink="/" [disabled]="!signUpForm.form.valid">Sign up</button>
             </div>
           </form>
         </div>
