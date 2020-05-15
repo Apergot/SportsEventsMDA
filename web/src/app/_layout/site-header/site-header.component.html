@@ -31,7 +31,7 @@
           </a>
         </li>
         <li *ngIf="authService.isAuthenticated()" class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" (click)="signOut()">
             <i class="fas fa-sign-out-alt"></i>
             Sign out
           </a>
