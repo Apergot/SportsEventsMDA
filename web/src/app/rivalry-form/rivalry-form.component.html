@@ -1,0 +1,105 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <ul class="alert alert-danger" *ngIf="errors?.length > 0">
+    <li *ngFor="let err of errors">
+      {{ err }}
+    </li>
+  </ul>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>{{ title }}</h1>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="card border-primary mb-3">
+      <div class="card-header">
+        <button class="btn btn-rounded btn-primary" [routerLink]="['/rivalries']">Rivalries list</button>
+      </div>
+
+      <div class="card-body text-primary">
+        <form #rivalryForm="ngForm">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="rivalryname">Rivalry Name</label>
+              <input type="text" class="form-control" id="rivalryname" name="rivalryname" placeholder="Rivalry name"
+                     [(ngModel)]="rivalry.rivalryname" #rivalryname="ngModel" required>
+              <div class="alert-danger" *ngIf="rivalryname.invalid && (rivalryname.dirty || rivalryname.touched)">
+                <div *ngIf="rivalryname.errors.required">
+                  Rivalry name is required
+                </div>
+                <div *ngIf="rivalryname.errors.minlength">
+                  Rilvary name length should be at least 4 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" id="location" name="location" placeholder="Location"
+                     [(ngModel)]="rivalry.location" #location="ngModel" required>
+              <div class="alert-danger" *ngIf="location.invalid && (location.dirty || location.touched)">
+                <div *ngIf="location.errors.required">
+                  location is required
+                </div>
+                <div *ngIf="location.errors.minlength">
+                  location length should be at least 4 characters
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="date_">Rivalry date</label>
+              <div class="input-group date" id="date_" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#date_" name="date_"
+                       [(ngModel)]="rivalry.date_" #date_="ngModel">
+                <div class="input-group-append" data-target="#date_" data-toggle="datetimepicker">
+                  <div (click)='onClickDatepicker()' class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="description">Description</label>
+              <textarea class="form-control" rows="3" id="description" name="description" placeholder="Description"
+                        [(ngModel)]="rivalry.description" #description="ngModel" placeholder="Enter ..."
+                        required></textarea>
+              <div class="alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
+                <div *ngIf="description.errors.required">
+                  Description is required
+                </div>
+                <div *ngIf="description.errors.minlength">
+                  Description length should be at least 4 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn btn-success float-right px-5" role="button" (click)='create()'
+                    *ngIf="!rivalry.id else elseBlock"
+                    [disabled]="!rivalryForm.form.valid">Create
+            </button>
+            <ng-template #elseBlock>
+              <button class="btn btn-success float-right px-5" role="button"
+                      [disabled]="!rivalryForm.form.valid">Update
+              </button>
+            </ng-template>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.card -->
+
+  </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
