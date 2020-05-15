@@ -1,4 +1,4 @@
-package com.mdasports.sportseventsweb;
+package com.mdasports.sportseventsweb.daoTests;
 
 import com.mdasports.sportseventsweb.models.dao.IUserDao;
 import com.mdasports.sportseventsweb.models.entities.Role;
@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

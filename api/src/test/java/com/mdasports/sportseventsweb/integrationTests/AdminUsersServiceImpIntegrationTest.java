@@ -1,4 +1,4 @@
-package com.mdasports.sportseventsweb;
+package com.mdasports.sportseventsweb.integrationTests;
 
 import com.mdasports.sportseventsweb.models.dao.IUserDao;
 import com.mdasports.sportseventsweb.models.entities.Role;
@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -66,4 +67,15 @@ public class AdminUsersServiceImpIntegrationTest {
         User found = userDao.findByUsername(username);
         assertThat(found.getUsername()).isEqualTo(username);
     }
+
+    @Test
+    public void whenValidId_thenUserShouldBeFound(){
+        Long id = 2L;
+        Optional<User> found =  userDao.findById(id);
+        if (found.isPresent()) {
+            User user = found.get();
+            assertThat(user.getUsername()).isEqualTo(apergot.getUsername());
+        }
+    }
+
 }

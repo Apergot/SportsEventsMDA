@@ -1,4 +1,4 @@
-package com.mdasports.sportseventsweb;
+package com.mdasports.sportseventsweb.integrationTests;
 
 import com.mdasports.sportseventsweb.models.dao.IRivalryDao;
 import com.mdasports.sportseventsweb.models.entities.Rivalry;
@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -56,5 +57,15 @@ public class AdminRivalryServiceImpIntegrationTest {
         String rivalryName = "LPAthletism";
         Rivalry found = rivalryDao.findByRivalryname(rivalryName);
         assertThat(found.getRivalryname()).isEqualTo(rivalryName);
+    }
+
+    @Test
+    public void whenValidId_thenRivalryShouldBeFound(){
+        Long id = 1L;
+        Optional<Rivalry> found = rivalryDao.findById(id);
+        if (found.isPresent()) {
+            Rivalry retrieved = found.get();
+            assertThat(retrieved.getRivalryname()).isEqualTo(rivalry.getRivalryname());
+        }
     }
 }

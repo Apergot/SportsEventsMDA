@@ -1,4 +1,4 @@
-package com.mdasports.sportseventsweb;
+package com.mdasports.sportseventsweb.daoTests;
 
 import com.mdasports.sportseventsweb.models.dao.IRivalryDao;
 import com.mdasports.sportseventsweb.models.entities.Rivalry;
@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,9 +52,5 @@ public class RivalryDaoTest {
         assertThat(found.getDate()).isEqualTo(example.getDate());
         assertThat(found.getId()).isEqualTo(example.getId());
     }
-    /*Sprint 1 15-05-2020*/
-    @Test
-    public void whenFindById_thenReturnRivalry(){
 
-    }
 }
