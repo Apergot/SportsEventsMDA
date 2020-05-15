@@ -13,4 +13,5 @@ public interface IAdminRivalriesService {
     public Rivalry findById(Long id);
     public Rivalry save(Rivalry rivalry);
     public void delete(Long id);
+    public Rivalry getRivalryByName(String name);
 }

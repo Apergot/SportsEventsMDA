@@ -10,8 +10,8 @@ import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component
 import { SiteHeaderComponent } from './_layout/site-header/site-header.component';
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './users/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.component';
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
@@ -22,6 +22,7 @@ import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { RivalriesComponent } from './rivalries/rivalries.component';
 import { RivalryFormComponent } from './rivalry-form/rivalry-form.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RivalryFormComponent } from './rivalry-form/rivalry-form.component';
     UserFormComponent,
     RivalriesComponent,
     RivalryFormComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

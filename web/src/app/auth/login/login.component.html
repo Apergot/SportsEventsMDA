@@ -1,0 +1,49 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+
+            <div class="card-header text-center">
+              <b>{{title}}</b> to start your session
+            </div>
+
+            <div class="card-body">
+              <form #signInForm="ngForm">
+                <div class="input-group mb-3">
+                  <input [(ngModel)]="user.username" type="email" class="form-control" name="username" id="username" placeholder="Username" autofocus required>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input [(ngModel)]="user.password" type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-lock"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block" role="button" (click)='login()' [disabled]="!signInForm.form.valid">Sign In</button>
+                  </div>
+                </div>
+              </form>
+              <p class="mb-0">
+                <a href="/register" class="text-center">Register a new membership</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div><!-- /.content -->
+
+</div><!-- /.content-wrapper -->
