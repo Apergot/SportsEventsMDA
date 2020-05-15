@@ -56,11 +56,11 @@ public class Rivalry implements Serializable {
         this.capacity = capacity;
     }
 
-    public Date getRivalryDate(){
+    public Date getRivalrydate(){
         return rivalrydate;
     }
 
-    public void setRivalryDate(Date rivalrydate) {this.rivalrydate = rivalrydate; }
+    public void setRivalrydate(Date rivalrydate) {this.rivalrydate = rivalrydate; }
 
     public String getDescription() { return description; }
 

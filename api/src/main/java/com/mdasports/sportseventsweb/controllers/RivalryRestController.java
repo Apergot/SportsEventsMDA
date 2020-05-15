@@ -118,7 +118,7 @@ public class RivalryRestController {
             currentRivalry.setRivalryname(rivalry.getRivalryname());
             currentRivalry.setLocation(rivalry.getLocation());
             currentRivalry.setCapacity(rivalry.getCapacity());
-            currentRivalry.setRivalryDate(rivalry.getRivalryDate());
+            currentRivalry.setRivalrydate(rivalry.getRivalrydate());
             currentRivalry.setDescription(rivalry.getDescription());
             updatedRivalry = iAdminRivalriesService.save(currentRivalry);
         }catch (DataAccessException e){

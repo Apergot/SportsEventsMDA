@@ -30,7 +30,7 @@ public class RivalryDaoTest {
     public void init(){
         example = new Rivalry();
         example.setCapacity(1000);
-        example.setRivalryDate(new Date());
+        example.setRivalrydate(new Date());
         example.setRivalryname("Olimpic Games");
         example.setId(1L);
         example.setLocation("Las Palmas");
@@ -48,7 +48,7 @@ public class RivalryDaoTest {
         //then
         assertThat(found.getRivalryname()).isEqualTo(example.getRivalryname());
         assertThat(found.getCapacity()).isEqualTo(example.getCapacity());
-        assertThat(found.getRivalryDate()).isEqualTo(example.getRivalryDate());
+        assertThat(found.getRivalrydate()).isEqualTo(example.getRivalrydate());
         assertThat(found.getId()).isEqualTo(example.getId());
     }
 
