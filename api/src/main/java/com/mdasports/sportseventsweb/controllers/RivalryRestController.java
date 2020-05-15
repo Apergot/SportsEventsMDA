@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -119,7 +118,7 @@ public class RivalryRestController {
             currentRivalry.setRivalryname(rivalry.getRivalryname());
             currentRivalry.setLocation(rivalry.getLocation());
             currentRivalry.setCapacity(rivalry.getCapacity());
-            currentRivalry.setDate(rivalry.getDate());
+            currentRivalry.setRivalryDate(rivalry.getRivalryDate());
             currentRivalry.setDescription(rivalry.getDescription());
             updatedRivalry = iAdminRivalriesService.save(currentRivalry);
         }catch (DataAccessException e){

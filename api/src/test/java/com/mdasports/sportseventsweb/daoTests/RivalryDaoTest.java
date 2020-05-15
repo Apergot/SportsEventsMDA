@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +30,7 @@ public class RivalryDaoTest {
     public void init(){
         example = new Rivalry();
         example.setCapacity(1000);
-        example.setDate(new Date());
+        example.setRivalryDate(new Date());
         example.setRivalryname("Olimpic Games");
         example.setId(1L);
         example.setLocation("Las Palmas");
@@ -49,7 +48,7 @@ public class RivalryDaoTest {
         //then
         assertThat(found.getRivalryname()).isEqualTo(example.getRivalryname());
         assertThat(found.getCapacity()).isEqualTo(example.getCapacity());
-        assertThat(found.getDate()).isEqualTo(example.getDate());
+        assertThat(found.getRivalryDate()).isEqualTo(example.getRivalryDate());
         assertThat(found.getId()).isEqualTo(example.getId());
     }
 
