@@ -51,4 +51,9 @@ public class RivalryDaoTest {
         assertThat(found.getDate()).isEqualTo(example.getDate());
         assertThat(found.getId()).isEqualTo(example.getId());
     }
+    /*Sprint 1 15-05-2020*/
+    @Test
+    public void whenFindById_thenReturnRivalry(){
+
+    }
 }
