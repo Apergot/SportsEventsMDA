@@ -4,7 +4,6 @@ import {Observable, throwError} from 'rxjs';
 import {Rivalry} from './rivalry';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
-import {User} from '../users/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +26,7 @@ export class RivalryService {
     return this.http
       .post(this.urlEndPoint, rivalry, {headers: this.httpHeaders})
       .pipe(
-        map((response: any) => response.user as Rivalry),
+        map((response: any) => response.rivalry as Rivalry),
         catchError((e) => {
           if (e.status === 400) {
             return throwError(e);

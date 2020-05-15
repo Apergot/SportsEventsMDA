@@ -1,34 +1,49 @@
-<ul class="alert alert-danger" *ngIf="errors?.length > 0">
-<li *ngFor="let err of errors">
-  {{ err }}
-</li>
-</ul>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
 
-<div class="w-50 mx-auto" style="width: 200px;">
+  <!-- Main content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
 
-  <div class="card border-primary text-center">
-    <div class="card-header">{{title}}</div>
-    <div class="card-body">
+            <div class="card-header text-center">
+              <b>Sign in</b> to start your session
+            </div>
 
-      <form method="post">
-
-        <div class="text-center">
-          <img class="mb-4 " src="./assets/logoSportsEvent.png" alt="logo de sports event" width="35%" height="35%">
+            <div class="card-body">
+              <form #userForm="ngForm">
+                <div class="input-group mb-3">
+                  <input [(ngModel)]="user.username" type="email" class="form-control" name="username" id="username" placeholder="Username" autofocus required>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input [(ngModel)]="user.password" type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-lock"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block" role="button" (click)='login()'>Sign In</button>
+                  </div>
+                </div>
+              </form>
+              <p class="mb-0">
+                <a href="/register" class="text-center">Register a new membership</a>
+              </p>
+            </div>
+          </div>
         </div>
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div><!-- /.content -->
 
-        <div class="form-group col-sm-6">
-          <input [(ngModel)]="user.username" type="text" class="form-control" name="username" id="username"
-            placeholder="Username" autofocus required>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <input [(ngModel)]="user.password" type="password" class="form-control" name="password" id="password"
-            placeholder="Password" required>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <input (click)='login()' type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
-        </div>
-      </form>
-    </div>
-  </div>
+</div><!-- /.content-wrapper -->

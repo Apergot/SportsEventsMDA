@@ -57,11 +57,25 @@
               </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-2">
+              <label for="capacity">Capacity</label>
+              <input type="text" class="form-control" id="capacity" name="capacity" placeholder="Capacity"
+                     [(ngModel)]="rivalry.capacity" #capacity="ngModel" required>
+              <div class="alert-danger" *ngIf="capacity.invalid && (capacity.dirty || capacity.touched)">
+                <div *ngIf="capacity.errors.required">
+                  capacity is required
+                </div>
+                <div *ngIf="capacity.errors.minlength">
+                  capacity
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
               <label for="date_">Rivalry date</label>
               <div class="input-group date" id="date_" data-target-input="nearest">
                 <input type="text" class="form-control datetimepicker-input" data-target="#date_" name="date_"
-                       [(ngModel)]="rivalry.date_" #date_="ngModel">
+                       [(ngModel)]="rivalry.rivalrydate" #date_="ngModel">
                 <div class="input-group-append" data-target="#date_" data-toggle="datetimepicker">
                   <div (click)='onClickDatepicker()' class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
                 </div>
