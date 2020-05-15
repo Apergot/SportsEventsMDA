@@ -9,21 +9,8 @@ import { AppComponent } from './app.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
 import { SiteHeaderComponent } from './_layout/site-header/site-header.component';
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
-<<<<<<< HEAD
-import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
-import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.component';
-
-import { HomeComponent } from "./home/home.component";
-import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.component';
-
-import { UsersComponent } from "./users/users.component";
-import { UserFormComponent } from "./user-form/user-form.component";
-
-
-=======
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
->>>>>>> d2d4149c6356c102b72ee2538e0ebcd5ae831045
+import { LoginComponent } from './users/login.component';
 import { RegisterComponent } from './register/register.component';
 
 import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.component';
@@ -43,15 +30,7 @@ import { RivalryFormComponent } from './rivalry-form/rivalry-form.component';
     SiteHeaderComponent,
     SiteFooterComponent,
     HomeComponent,
-<<<<<<< HEAD
-    UsersComponent,
-    UserFormComponent,
-    AdminHeaderComponent,
-    AdminFooterComponent,
-    AdminSidebarComponent,
-=======
     LoginComponent,
->>>>>>> d2d4149c6356c102b72ee2538e0ebcd5ae831045
     RegisterComponent,
     AdminLayoutComponent,
     AdminHeaderComponent,
