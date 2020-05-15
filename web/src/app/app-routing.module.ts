@@ -10,7 +10,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RivalriesComponent} from './rivalries/rivalries.component';
 
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './users/login.component';
 import { RegisterComponent } from './register/register.component';
 import {RivalryFormComponent} from './rivalry-form/rivalry-form.component';
 
