@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './user';
+import {Component, OnInit} from '@angular/core';
+import {User} from './user';
 import swal from 'sweetalert2';
-import { AuthService } from './auth.service';
-import { Router } from '@angular/router';
+import {AuthService} from './auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  title: string = 'Log in';
+  title: string = 'Sign in';
   user: User;
   errors: string[];
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      
+
       this.router.navigate(['/dashboard']);
     }
   }
@@ -31,21 +31,21 @@ export class LoginComponent implements OnInit {
       swal.fire('Error Login', 'Username or password empty!', 'error');
       return;
     }
-    
-    this.authService.login(this.user).subscribe(response => {
-      
-      console.log(response);
 
-      this.authService.guardUser(response.access_token);
-      this.authService.guardToken(response.access_token);
-      let user = this.authService.user;
-      this.router.navigate(['/dashboard']);
-      swal.fire('Nombre', `${user.username} ${user.firstname}`, 'info');
-    }, err => {
-      if (err.status == 400) {
-        swal.fire('Login error', `${err.status}`, 'error');
+    this.authService.login(this.user).subscribe(response => {
+
+        console.log(response);
+
+        this.authService.guardUser(response.access_token);
+        this.authService.guardToken(response.access_token);
+        const user = this.authService.user;
+        this.router.navigate(['/dashboard']);
+        swal.fire('Nombre', `${user.username} ${user.firstname}`, 'info');
+      }, err => {
+        if (err.status === 400) {
+          swal.fire('Login error', `${err.status}`, 'error');
+        }
       }
-    }
     );
   }
 
