@@ -1,7 +1,6 @@
 package com.mdasports.sportseventsweb.controllers;
 
 import com.mdasports.sportseventsweb.models.entities.Rivalry;
-import com.mdasports.sportseventsweb.models.entities.User;
 import com.mdasports.sportseventsweb.models.services.IAdminRivalriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -78,6 +78,53 @@ public class RivalryRestController {
         }
         map.put("message", "Rivalry has been created successfully");
         map.put("rivalry", newRivalry);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/rivalries/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            iAdminRivalriesService.delete(id);
+        } catch (DataAccessException e) {
+            map.put("message", "Error deleting rivalry");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "rivalry has been deleted successfully");
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+    @PutMapping("/rivalries/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody Rivalry rivalry, BindingResult result, @PathVariable Long id){
+
+        Rivalry currentRivalry = iAdminRivalriesService.findById(id);
+        Map<String, Object> map = new HashMap<>();
+        if(result.hasErrors()){
+            List<String> errors = result.getFieldErrors().stream()
+                    .map(fieldError -> fieldError.getDefaultMessage())
+                    .collect(Collectors.toList());
+            map.put("errors", errors);
+            return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+        }
+        if(currentRivalry==null){
+            map.put("message", "Could not update rivalry with id ".concat(id.toString()));
+        }
+
+        Rivalry updatedRivalry = null;
+        try{
+            currentRivalry.setRivalryname(rivalry.getRivalryname());
+            currentRivalry.setLocation(rivalry.getLocation());
+            currentRivalry.setCapacity(rivalry.getCapacity());
+            currentRivalry.setDate(rivalry.getDate());
+            currentRivalry.setDescription(rivalry.getDescription());
+            updatedRivalry = iAdminRivalriesService.save(currentRivalry);
+        }catch (DataAccessException e){
+            map.put("message", "Error updating user data");
+            map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        map.put("message", "Rivalry has been updated succesfully");
+        map.put("rivalry", updatedRivalry);
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 }
