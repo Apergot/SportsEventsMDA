@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {Rivalry} from './rivalry';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,29 @@ export class RivalryService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, 
+    private authService: AuthService) {
   }
+
+  private addAuthHeader() {
+    let token = this.authService.token;
+    if (token != null) {
+      return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeaders;
+  }
+
+  
 
   getRivalries(): Observable<Rivalry[]> {
     return this.http
-      .get(this.urlEndPoint)
+      .get(this.urlEndPoint, { headers: this.addAuthHeader() })
       .pipe(map((response) => response as Rivalry[]));
   }
 
   create(rivalry: Rivalry): Observable<Rivalry> {
     return this.http
-      .post(this.urlEndPoint, rivalry, {headers: this.httpHeaders})
+      .post(this.urlEndPoint, rivalry, {headers: this.addAuthHeader()})
       .pipe(
         map((response: any) => response.rivalry as Rivalry),
         catchError((e) => {
@@ -42,7 +54,7 @@ export class RivalryService {
   update(rivalry: Rivalry): Observable<Rivalry> {
     return this.http
       .put<Rivalry>(`${this.urlEndPoint}/${rivalry.id}`, rivalry, {
-        headers: this.httpHeaders,
+        headers: this.addAuthHeader(),
       })
       .pipe(
         catchError((e) => {
