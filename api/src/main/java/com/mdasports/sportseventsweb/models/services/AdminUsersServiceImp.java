@@ -45,4 +45,10 @@ public class AdminUsersServiceImp implements IAdminUsersService {
     public void delete(Long id) {
         userAdminDao.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public User getUserByUsername(String name){
+        return userAdminDao.findByUsername(name);
+    }
 }
