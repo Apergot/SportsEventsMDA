@@ -11,10 +11,15 @@ import swal from 'sweetalert2';
 export class RivalriesComponent implements OnInit {
   rivalries: Rivalry[];
 
-  constructor(private rivalryService: RivalryService) {}
+  constructor(private rivalryService: RivalryService) {
+  }
 
   ngOnInit(): void {
     this.rivalryService.getRivalries().subscribe((rivalries) => (this.rivalries = rivalries));
+  }
+
+  displayDate(rivalry: Rivalry) {
+    console.log(rivalry);
   }
 
   delete(rivalry: Rivalry): void {
