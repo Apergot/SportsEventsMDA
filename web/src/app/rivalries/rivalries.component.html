@@ -36,7 +36,7 @@
               <th id="th_description">Description</th>
               <th id="th_location">Location</th>
               <th id="th_capacity">Capacity</th>
-              <th id="th_date">Date</th>
+              <th id="th_rivalrydate">Rivalry date</th>
               <th id="th_actions" colspan="2" class="text-center">Actions</th>
             </tr>
             </thead>
@@ -47,7 +47,7 @@
               <td>{{rivalry.description}}</td>
               <td>{{rivalry.capacity}}</td>
               <td>{{rivalry.location}}</td>
-              <td>{{rivalry.date}}</td>
+              <td>{{rivalry.rivalrydate}}</td>
               <td>
                 <button type="button" name="edit" class="btn btn-warning"
                         [routerLink]="['/rivalries/form', rivalry.id]">Edit

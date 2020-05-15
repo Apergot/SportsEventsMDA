@@ -72,11 +72,12 @@
             </div>
 
             <div class="form-group col-md-2">
-              <label for="date">Rivalry date</label>
-              <div class="input-group date" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" id="date" name="date" [(ngModel)]="rivalry.date" #date="ngModel">
-                <div class="input-group-append" data-target="#date" data-toggle="datetimepicker">
-                  <div (click)='onClickDatepicker()' class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+              <label for="rivalrydate">rivalrydate</label>
+              <input type="date" class="form-control" id="rivalrydate" name="rivalrydate" placeholder="rivalrydate"
+                     [(ngModel)]="rivalry.rivalrydate" #rivalrydate="ngModel" required>
+              <div class="alert-danger" *ngIf="rivalrydate.invalid && (rivalrydate.dirty || rivalrydate.touched)">
+                <div *ngIf="rivalrydate.errors.required">
+                  rivalrydate is required
                 </div>
               </div>
             </div>

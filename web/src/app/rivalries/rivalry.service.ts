@@ -5,7 +5,6 @@ import {Rivalry} from './rivalry';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
 import {AuthService} from '../auth/auth.service';
-import {User} from '../users/user';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +50,8 @@ export class RivalryService {
   }
 
   update(rivalry: Rivalry): Observable<Rivalry> {
+    console.log('UPDATE-FECHA: ' + rivalry.rivalrydate);
+
     return this.http
       .put<Rivalry>(`${this.urlEndPoint}/${rivalry.id}`, rivalry, {headers: this.addAuthHeader()})
       .pipe(
@@ -79,6 +80,7 @@ export class RivalryService {
   }
 
   getRivalry(id): Observable<Rivalry> {
+    console.log('GET_ID: ' + id);
     return this.http.get<Rivalry>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         console.error(e.error.mensaje);
