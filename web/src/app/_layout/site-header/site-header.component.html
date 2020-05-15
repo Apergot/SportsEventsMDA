@@ -17,7 +17,7 @@
         <li class="nav-item">
           <a href="/" class="nav-link">Home</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="authService.isAuthenticated()" class="nav-item">
           <a href="/dashboard" class="nav-link">Dashboard</a>
         </li>
       </ul>
