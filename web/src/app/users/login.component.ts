@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
 
       this.authService.guardUser(response.access_token);
       this.authService.guardToken(response.access_token);
-      let user = this.authService.user;
-      this.router.navigate(['/dashboard']);
-      swal.fire('Nombre', `${user.username} ${user.firstname}`, 'info');
+      
+      let usuario = this.authService.user;
+      this.router.navigate(['/dashboard']); 
     }, err => {
       if (err.status == 400) {
         swal.fire('Login error', `${err.status}`, 'error');

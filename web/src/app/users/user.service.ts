@@ -5,6 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { User } from './user';
 import swal from 'sweetalert2';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,17 +18,43 @@ export class UserService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router,
+    private authService: AuthService) { }
+
+  private addAuthHeader() {
+    let token = this.authService.token;
+    if (token != null) {
+      return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeaders;
+  }
+
+  private isNoAutorizado(e): boolean {
+    if (e.status == 401) {
+
+      if (this.authService.isAuthenticated()) {
+        this.authService.logout();
+      }
+      this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      this.router.navigate(['/dashboard']);
+      return true;
+    }
+    return false;
+  }
 
   getUsers(): Observable<User[]> {
     return this.http
-      .get(this.urlEndPoint)
-      .pipe(map((response) => response as User[]));
+      .get(this.urlEndPoint, {headers: this.addAuthHeader()})
+      .pipe(map((response) => response as User[]) );
   }
 
   delete(id: number): Observable<User> {
     return this.http
-      .delete<User>(`${this.urlEndPoint}/${id}`, { headers: this.httpHeaders })
+      .delete<User>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()})
       .pipe(
         catchError((e) => {
           console.error(e.error.message);
@@ -36,7 +66,7 @@ export class UserService {
 
   create(user: User): Observable<User> {
     return this.http
-      .post(this.urlEndPoint, user, { headers: this.httpHeaders })
+      .post(this.urlEndPoint, user, {headers: this.addAuthHeader()})
       .pipe(
         map((response: any) => response.user as User),
         catchError((e) => {
@@ -53,9 +83,7 @@ export class UserService {
 
   update(user: User): Observable<User> {
     return this.http
-      .put<User>(`${this.urlEndPoint}/${user.id}`, user, {
-        headers: this.httpHeaders,
-      })
+      .put<User>(`${this.urlEndPoint}/${user.id}`, user, {headers: this.addAuthHeader()})
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -70,7 +98,7 @@ export class UserService {
   }
 
   getUser(id): Observable<User> {
-    return this.http.get<User>(`${this.urlEndPoint}/${id}`).pipe(
+    return this.http.get<User>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()}).pipe(
       catchError((e) => {
         console.error(e.error.mensaje);
         swal.fire('Error al editar', e.error.mensaje, 'error');
