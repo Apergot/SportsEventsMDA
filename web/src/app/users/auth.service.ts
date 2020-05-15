@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user';
-import { Role } from './role';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {User} from './user';
+import {Role} from './role';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,8 @@ export class AuthService {
   private _user: User;
   private _token: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public get user(): User {
     if (this._user != null) {
@@ -36,24 +37,24 @@ export class AuthService {
 
   login(user: User): Observable<any> {
     const urlEndpoint = 'http://localhost:8080/oauth/token';
-    
+
     const credenciales = btoa('angularapp' + ':' + '12345');
-    
+
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic ' + credenciales
     });
-    
-    let params = new URLSearchParams();
+
+    const params = new URLSearchParams();
     params.set('grant_type', 'password');
     params.set('username', user.username);
     params.set('password', user.password);
     console.log(params.toString());
-    return this.http.post<any>(urlEndpoint, params.toString(), { headers: httpHeaders });
+    return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
   }
 
   guardUser(accessToken: string): void {
-    let payload = this.GetDatasToken(accessToken);
+    const payload = this.getDatasToken(accessToken);
     this._user = new User();
     this._user.firstname = payload.firstname;
     this._user.lastname = payload.lastname;
@@ -68,27 +69,20 @@ export class AuthService {
     sessionStorage.setItem('token', accessToken);
   }
 
-  GetDatasToken(accessToken: string): any {
+  getDatasToken(accessToken: string): any {
     if (accessToken != null) {
-      return JSON.parse(atob(accessToken.split(".")[1]));
+      return JSON.parse(atob(accessToken.split('.')[1]));
     }
     return null;
   }
 
   isAuthenticated(): boolean {
-    let payload = this.GetDatasToken(this.token);
-    if (payload != null && payload.user_name && payload.user_name.length > 0) {
-      return true;
-    }
-    return false;
+    const payload = this.getDatasToken(this.token);
+    return payload != null && payload.user_name && payload.user_name.length > 0;
   }
 
   hasRole(role: Role): boolean {
-    if (this.user.roles.includes(role)) {
-      return true;
-    }
-    return false;
-    
+    return this.user.roles.includes(role);
   }
 
   logout(): void {
