@@ -3,6 +3,7 @@ package com.mdasports.sportseventsweb.controllers;
 import com.mdasports.sportseventsweb.models.entities.Rivalry;
 import com.mdasports.sportseventsweb.models.services.IAdminRivalriesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -56,7 +57,6 @@ public class RivalryRestController {
         return new ResponseEntity<>(rivalry, HttpStatus.OK);
     }
 
-    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @PostMapping("/rivalries")
     public ResponseEntity<?> create(@Valid @RequestBody Rivalry rivalry, BindingResult result) {
 
@@ -104,7 +104,7 @@ public class RivalryRestController {
         Map<String, Object> map = new HashMap<>();
         if(result.hasErrors()){
             List<String> errors = result.getFieldErrors().stream()
-                    .map(fieldError -> fieldError.getDefaultMessage())
+                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
                     .collect(Collectors.toList());
             map.put("errors", errors);
             return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
@@ -115,6 +115,7 @@ public class RivalryRestController {
 
         Rivalry updatedRivalry = null;
         try{
+            assert currentRivalry != null;
             currentRivalry.setRivalryname(rivalry.getRivalryname());
             currentRivalry.setLocation(rivalry.getLocation());
             currentRivalry.setCapacity(rivalry.getCapacity());
