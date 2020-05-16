@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import swal from 'sweetalert2';
-import { User } from './user';
-import { UserService } from './user.service';
-import { Role } from './role';
+import {User} from './user';
+import {UserService} from './user.service';
+import {Role} from './role';
 
 declare const toast: any;
 
@@ -13,7 +13,8 @@ declare const toast: any;
 export class UsersComponent implements OnInit {
   users: User[];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((users) => (this.users = users));

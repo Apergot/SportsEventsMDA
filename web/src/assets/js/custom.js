@@ -30,5 +30,5 @@ function highlightCurrentPageInNav(){
 
 // Shorthand for $( document ).ready()
 $(function() {
-  highlightCurrentPageInNav();
+  // highlightCurrentPageInNav();
 });

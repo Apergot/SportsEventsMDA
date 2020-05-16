@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+declare const highlightCurrentPageInNav: any;
 
 @Component({
   selector: 'app-admin-layout',
@@ -6,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    highlightCurrentPageInNav();
   }
 
 }

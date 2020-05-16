@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { Role } from '../role';
-import { UserService } from '../user.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../user';
+import {Role} from '../role';
+import {UserService} from '../user.service';
+import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 
 declare const toast: any;
@@ -18,15 +18,16 @@ export class UserFormComponent implements OnInit {
   errors: string[];
 
   roles: Role[] = [
-    { id: 1, name: 'ROLE_USER' },
-    { id: 2, name: 'ROLE_ADMIN' },
+    {id: 1, name: 'ROLE_USER'},
+    {id: 2, name: 'ROLE_ADMIN'},
   ];
 
   constructor(
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {

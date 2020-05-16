@@ -9,7 +9,9 @@ import {Role} from '../users/role';
 })
 export class AuthService {
 
+  // tslint:disable-next-line:variable-name
   private _user: User;
+  // tslint:disable-next-line:variable-name
   private _token: string;
 
   constructor(private http: HttpClient) {
@@ -42,7 +44,7 @@ export class AuthService {
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + credenciales
+      Authorization: 'Basic ' + credenciales
     });
 
     const params = new URLSearchParams();
