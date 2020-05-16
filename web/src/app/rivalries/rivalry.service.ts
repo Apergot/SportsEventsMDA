@@ -79,8 +79,7 @@ export class RivalryService {
   }
 
   getRivalry(id): Observable<Rivalry> {
-    console.log('GET_ID: ' + id);
-    return this.http.get<Rivalry>(`${this.urlEndPoint}/${id}`).pipe(
+    return this.http.get<Rivalry>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()}).pipe(
       catchError((e) => {
         console.error(e.error.mensaje);
         swal.fire('Error al editar', e.error.mensaje, 'error');

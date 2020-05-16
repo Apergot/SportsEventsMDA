@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Rivalry} from '../rivalries/rivalry';
+import {Rivalry} from '../rivalry';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RivalryService} from '../rivalries/rivalry.service';
+import {RivalryService} from '../rivalry.service';
 import swal from 'sweetalert2';
 
 declare const datepicker: any;

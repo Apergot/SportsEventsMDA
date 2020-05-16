@@ -19,9 +19,9 @@ import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.com
 import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
-import { UserFormComponent } from './user-form/user-form.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
 import { RivalriesComponent } from './rivalries/rivalries.component';
-import { RivalryFormComponent } from './rivalry-form/rivalry-form.component';
+import { RivalryFormComponent } from './rivalries/rivalry-form/rivalry-form.component';
 import { AuthComponent } from './auth/auth.component';
 
 @NgModule({

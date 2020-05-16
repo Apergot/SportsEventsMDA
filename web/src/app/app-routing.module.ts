@@ -7,13 +7,13 @@ import {AdminLayoutComponent} from './_layout/admin-layout/admin-layout.componen
 
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './users/users.component';
-import {UserFormComponent} from './user-form/user-form.component';
+import {UserFormComponent} from './users/user-form/user-form.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RivalriesComponent} from './rivalries/rivalries.component';
 
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
-import {RivalryFormComponent} from './rivalry-form/rivalry-form.component';
+import {RivalryFormComponent} from './rivalries/rivalry-form/rivalry-form.component';
 
 
 const routes: Routes = [
