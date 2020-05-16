@@ -54,6 +54,10 @@ export class UserFormComponent implements OnInit {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
       }
     );
   }
@@ -71,6 +75,10 @@ export class UserFormComponent implements OnInit {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
       }
     );
   }
