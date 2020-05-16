@@ -5,6 +5,8 @@ import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 
+declare const toast: any;
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html'
@@ -43,7 +45,10 @@ export class UserFormComponent implements OnInit {
     this.userService.create(this.user).subscribe(
       () => {
         this.router.navigate(['/users']);
-        swal.fire('New user', `User has been created successfully`, 'success');
+        toast().fire({
+          icon: 'success',
+          title: `User has been created successfully`
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
@@ -57,11 +62,10 @@ export class UserFormComponent implements OnInit {
     this.userService.update(this.user).subscribe(
       () => {
         this.router.navigate(['/users']);
-        swal.fire(
-          'User updated',
-          `User has been updated successfully`,
-          'success'
-        );
+        toast().fire({
+          icon: 'success',
+          title: `User has been updated successfully`
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];

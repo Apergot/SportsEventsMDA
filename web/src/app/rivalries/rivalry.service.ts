@@ -5,7 +5,8 @@ import {Rivalry} from './rivalry';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
 import {AuthService} from '../auth/auth.service';
-import {User} from '../users/user';
+
+declare const toast: any;
 
 @Injectable({
   providedIn: 'root'

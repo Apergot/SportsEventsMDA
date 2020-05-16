@@ -3,6 +3,8 @@ import {Rivalry} from './rivalry';
 import {RivalryService} from './rivalry.service';
 import swal from 'sweetalert2';
 
+declare const toast: any;
+
 @Component({
   selector: 'app-rivalries',
   templateUrl: './rivalries.component.html'
@@ -15,10 +17,6 @@ export class RivalriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.rivalryService.getRivalries().subscribe((rivalries) => (this.rivalries = rivalries));
-  }
-
-  displayDate(rivalry: Rivalry) {
-    console.log(rivalry);
   }
 
   delete(rivalry: Rivalry): void {
@@ -36,11 +34,10 @@ export class RivalriesComponent implements OnInit {
         if (result.value) {
           this.rivalryService.delete(rivalry.id).subscribe(() => {
             this.rivalries = this.rivalries.filter((r) => r !== rivalry);
-            swal.fire(
-              'User Removed',
-              `User ${rivalry.rivalryname} removed successfully!`,
-              'success'
-            );
+            toast().fire({
+              icon: 'success',
+              title: `User ${rivalry.rivalryname} removed successfully!`
+            });
           });
         }
       });

@@ -4,6 +4,8 @@ import { User } from './user';
 import { UserService } from './user.service';
 import { Role } from './role';
 
+declare const toast: any;
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html'
@@ -55,11 +57,10 @@ export class UsersComponent implements OnInit {
         if (result.value) {
           this.userService.delete(user.id).subscribe(() => {
             this.users = this.users.filter((u) => u !== user);
-            swal.fire(
-              'User Removed',
-              `User ${user.username} removed successfully!`,
-              'success'
-            );
+            toast().fire({
+              icon: 'success',
+              title: `User ${user.username} removed successfully!`,
+            });
           });
         }
       });

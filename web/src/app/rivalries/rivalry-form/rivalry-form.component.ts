@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {RivalryService} from '../rivalry.service';
 import swal from 'sweetalert2';
 
-declare const datepicker: any;
+declare const toast: any;
 
 @Component({
   selector: 'app-rivalry-form',
@@ -36,15 +36,14 @@ export class RivalryFormComponent implements OnInit {
     });
   }
 
-  onClickDatepicker() {
-    datepicker();
-  }
-
   create() {
     this.rivalryService.create(this.rivalry).subscribe(
       () => {
         this.router.navigate(['/rivalries']);
-        swal.fire('New rivalry', `Rivalry has been created successfully`, 'success');
+        toast().fire({
+          icon: 'success',
+          title: `Rivalry has been created successfully`
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
@@ -58,11 +57,10 @@ export class RivalryFormComponent implements OnInit {
     this.rivalryService.update(this.rivalry).subscribe(
       () => {
         this.router.navigate(['/rivalries']);
-        swal.fire(
-          'Rivalry updated',
-          `Rivalry has been updated successfully`,
-          'success'
-        );
+        toast().fire({
+          icon: 'success',
+          title: `Rivalry has been updated successfully`,
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
