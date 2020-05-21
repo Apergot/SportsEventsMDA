@@ -33,7 +33,7 @@
               <div class="form-group col-md-6">
                 <label for="firstname">Firstname</label>
                 <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname"
-                       [(ngModel)]="user.firstname" #firstname="ngModel" required>
+                  [(ngModel)]="user.firstname" #firstname="ngModel" required>
                 <div class="alert-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
                   <div *ngIf="firstname.errors.required">
                     Firstname is required
@@ -47,7 +47,7 @@
               <div class="form-group col-md-6">
                 <label for="lastname">Lastname</label>
                 <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname"
-                       [(ngModel)]="user.lastname" #lastname="ngModel" required>
+                  [(ngModel)]="user.lastname" #lastname="ngModel" required>
                 <div class="alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
                   <div *ngIf="lastname.errors.required">
                     Lastname is required
@@ -63,7 +63,7 @@
               <div class="form-group col-md-2">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username"
-                       [(ngModel)]="user.username" #username="ngModel" required>
+                  [(ngModel)]="user.username" #username="ngModel" required>
                 <div class="alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
                   <div *ngIf="username.errors.required">
                     Username is required
@@ -77,7 +77,7 @@
               <div class="form-group col-md-5">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                       [(ngModel)]="user.email" #email="ngModel" required>
+                  [(ngModel)]="user.email" #email="ngModel" required>
                 <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                   <div *ngIf="email.errors.required">
                     Email is required
@@ -91,7 +91,7 @@
               <div class="form-group col-md-5">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                       [(ngModel)]="user.password" #password="ngModel" required>
+                  [(ngModel)]="user.password" #password="ngModel" required>
                 <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
                   <div *ngIf="password.errors.required">
                     Password is required
@@ -105,7 +105,7 @@
 
             <div>
               <button class="btn btn-success float-right px-5" role="button" type="submit" routerLink="/"
-                      [disabled]="!signUpForm.form.valid">Sign up
+                [disabled]="!signUpForm.form.valid" (click)='create()'>Sign up
               </button>
             </div>
           </form>
