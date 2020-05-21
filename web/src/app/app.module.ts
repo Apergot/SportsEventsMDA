@@ -10,6 +10,7 @@ import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component
 import { SiteHeaderComponent } from './_layout/site-header/site-header.component';
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
@@ -31,6 +32,7 @@ import { AuthComponent } from './auth/auth.component';
     SiteHeaderComponent,
     SiteFooterComponent,
     HomeComponent,
+    ContactComponent,
     LoginComponent,
     RegisterComponent,
     AdminLayoutComponent,
