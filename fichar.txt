@@ -1,4 +1,7 @@
 
 Sprint 2 fichar Miki
 
-START 21/05/2020 11:00
+START: 21/05/2020 11:00
+END: 21/05/2020 12:30
+
+time: 90 mins

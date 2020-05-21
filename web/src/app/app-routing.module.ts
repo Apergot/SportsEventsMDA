@@ -13,6 +13,7 @@ import {RivalriesComponent} from './rivalries/rivalries.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import {RivalryFormComponent} from './rivalry-form/rivalry-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,8 @@ const routes: Routes = [
       { path: 'rivalries/form', component: RivalryFormComponent },
       { path: 'users', component: UsersComponent },
       { path: 'users/form', component: UserFormComponent },
-      { path: 'users/form/:id', component: UserFormComponent }
+      { path: 'users/form/:id', component: UserFormComponent },
+      { path: 'profiles', component: ProfileComponent}
     ]
   },
 
