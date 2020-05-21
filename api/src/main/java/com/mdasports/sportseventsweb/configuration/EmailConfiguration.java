@@ -17,7 +17,7 @@ public class EmailConfiguration {
     private String mailHost;
 
     @Value("${spring.mail.port}")
-    private int port;
+    private String port;
 
     @Value("${spring.mail.username}")
     private String username;
@@ -30,7 +30,7 @@ public class EmailConfiguration {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(mailHost);
-        mailSender.setPort(port);
+        mailSender.setPort(Integer.parseInt(port));
 
         mailSender.setUsername(username);
         mailSender.setPassword(password);
@@ -38,7 +38,7 @@ public class EmailConfiguration {
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "false");
+        props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.debug", "true");
 
         return mailSender;
