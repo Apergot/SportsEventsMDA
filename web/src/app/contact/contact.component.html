@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row mb-2">
         <div class="col-sm-12">
-          <h1 class="m-0 text-dark">Contact and who we are</h1>
+          <h1 class="m-0 text-dark">Contact - Who we are</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -20,6 +20,7 @@
       <div class="card card-solid">
         <div class="card-body pb-0">
           <div class="row d-flex align-items-stretch">
+            <!-- Who we are -->
             <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch">
               <div class="card bg-light">
                 <div class="card-header text-muted border-bottom-0">
@@ -144,7 +145,7 @@
               </div>
             </div>
 
-
+            <!-- General Contact Form -->
             <div class="col-md-12">
               <div class="card card-info">
                 <div class="card-header">
@@ -152,31 +153,48 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form">
+                <form #contactForm="ngForm">
                   <div class="card-body">
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        <div class="alert-danger" *ngIf="contactForm.invalid && (contactForm.dirty || contactForm.touched)">
+                          <div *ngIf="contactForm.errors.required">
+                            Name is required
+                          </div>
+                        </div>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        <div class="alert-danger" *ngIf="contactForm.invalid && (contactForm.dirty || contactForm.touched)">
+                          <div *ngIf="contactForm.errors.required">
+                            Email is required
+                          </div>
+                        </div>
                       </div>
+
                       <div class="form-group col-md-12">
                         <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="subject" placeholder="Enter your name">
+                        <select class="custom-select" id="subject" name="subject" required>
+                          <option>Create a new club</option>
+                          <option>Feedback</option>
+                          <option selected>Single contact</option>
+                          <option>Other</option>
+                        </select>
                       </div>
+
                       <div class="form-group col-md-12">
                         <label>Message</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <textarea class="form-control" rows="3" minlength="5" placeholder="Enter ..." required></textarea>
                       </div>
                     </div>
                     <div>
-                      <button class="btn btn-info float-right px-3" role="button" >Send messsage</button>
+                      <button class="btn btn-info float-right px-3" role="button" (click)='sendMessage()'
+                              [disabled]="!contactForm.form.valid">Send messsage</button>
                     </div>
                   </div><!-- /.card-body -->
-
                 </form>
               </div>
             </div>
@@ -185,7 +203,6 @@
         </div><!-- /.card-body -->
         <div class="card-footer"></div><!-- /.card-footer -->
       </div>
-
 
     </div><!-- /.container-fluid -->
   </div><!-- /.content -->

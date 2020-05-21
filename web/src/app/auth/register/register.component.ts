@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../users/user';
-// import {Role} from 'src/app/users/role';
 import {UserService} from 'src/app/users/user.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../auth.service';
@@ -15,19 +14,6 @@ export class RegisterComponent implements OnInit {
   title = 'Sign up';
   user: User = new User();
   errors: string[];
-
-  /* roles: Role[] = [{id: 1, name: 'ROLE_USER'}];
-
-   constructor(
-    private userService: UserService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
-  }
-
-  ngOnInit(): void {
-    this.user.roles = this.roles;
-  } */
 
   constructor(private authService: AuthService, private userService: UserService, private router: Router) {
     this.user = new User();

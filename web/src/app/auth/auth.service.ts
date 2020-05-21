@@ -55,6 +55,14 @@ export class AuthService {
     return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
   }
 
+  logout(): void {
+    this._token = null;
+    this._user = null;
+    sessionStorage.clear();
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+  }
+
   guardUser(accessToken: string): void {
     const payload = this.getDatasToken(accessToken);
     this._user = new User();
@@ -87,11 +95,4 @@ export class AuthService {
     return this.user.roles.includes(role);
   }
 
-  logout(): void {
-    this._token = null;
-    this._user = null;
-    sessionStorage.clear();
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-  }
 }
