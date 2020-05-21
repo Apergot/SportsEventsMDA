@@ -3,7 +3,6 @@ import {User} from '../user';
 import {Role} from '../role';
 import {UserService} from '../user.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import swal from 'sweetalert2';
 
 declare const toast: any;
 
