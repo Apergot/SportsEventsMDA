@@ -6,6 +6,7 @@ import {SiteLayoutComponent} from './_layout/site-layout/site-layout.component';
 import {AdminLayoutComponent} from './_layout/admin-layout/admin-layout.component';
 
 import {HomeComponent} from './home/home.component';
+import {ContactComponent} from './contact/contact.component';
 import {UsersComponent} from './users/users.component';
 import {UserFormComponent} from './users/user-form/user-form.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     children: [
       {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path: 'contact', component: ContactComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent}
     ]
