@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Contact} from './contact';
 import {ContactService} from './contact.service';
-import {RivalryService} from '../rivalries/rivalry.service';
 import {UserService} from '../users/user.service';
+import {AuthService} from '../auth/auth.service';
 
 declare const toast: any;
 
@@ -21,28 +21,20 @@ export class ContactComponent implements OnInit {
     private contactService: ContactService,
     private userService: UserService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) {
   }
 
   ngOnInit(): void {
-    console.log('GO IN ...');
-    this.activatedRoute.paramMap.subscribe((params) => {
-      const id = +params.get('id');
-      if (id) {
-        this.userService.getUser(id).subscribe((user) => {
-          this.contact.name = user.firstname + ' ' + user.lastname;
-          this.contact.email = user.email;
-          console.log(user);
-        });
-      }
-    });
+    if (this.authService.isAuthenticated()) {
+      this.contact.name = this.authService.user.firstname + ' ' + this.authService.user.lastname;
+      this.contact.email = this.authService.user.email;
+      console.log(this.authService.user);
+    }
   }
 
   sendMessage() {
-    console.log(this.contact);
-    console.log(this.contact.name + ' ' + this.contact.email + ' ' + this.contact.subject + ' ' + this.contact.message);
-
     this.contactService.sendContactForm(this.contact).subscribe(
       () => {
         this.router.navigate(['/contact']);

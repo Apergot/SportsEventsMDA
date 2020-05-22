@@ -20,6 +20,74 @@
       <div class="card card-solid">
         <div class="card-body pb-0">
           <div class="row d-flex align-items-stretch">
+            <!-- General Contact Form -->
+            <div class="col-md-12">
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">General contact form</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form #contactForm="ngForm">
+                  <div class="card-body">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                               [(ngModel)]="contact.name" #name="ngModel" required>
+                        <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                          <div *ngIf="name.errors.required">
+                            Name is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                               [(ngModel)]="contact.email" #email="ngModel" required>
+                        <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                          <div *ngIf="email.errors.required">
+                            Email is required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                        <label for="subject">Subject</label>
+                        <select class="custom-select" id="subject" name="subject"
+                                [(ngModel)]="contact.subject" #subject="ngModel" required>
+                          <option>Create a new club</option>
+                          <option>Feedback</option>
+                          <option selected>Single contact</option>
+                          <option>Other</option>
+                        </select>
+                        <div class="alert-danger" *ngIf="subject.invalid && (subject.dirty || subject.touched)">
+                          <div *ngIf="subject.errors.required">
+                            Subject is required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                        <label>Message</label>
+                        <textarea class="form-control" rows="3" minlength="5" placeholder="Enter ..." name="message"
+                                  [(ngModel)]="contact.message" #message="ngModel" required></textarea>
+                        <div class="alert-danger" *ngIf="message.invalid && (message.dirty || message.touched)">
+                          <div *ngIf="message.errors.required">
+                            Message is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button class="btn btn-info float-right px-3" role="button" (click)='sendMessage()'
+                              [disabled]="!contactForm.form.valid">Send messsage</button>
+                    </div>
+                  </div><!-- /.card-body -->
+                </form>
+              </div>
+            </div>
+
             <!-- Who we are -->
             <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch">
               <div class="card bg-light">
@@ -30,7 +98,7 @@
                   <div class="row">
                     <div class="col-7">
                       <h2 class="lead"><b>Alejandro Perdomo</b></h2>
-                      <p class="text-muted text-sm"><b>About: </b> Web Designer / Software Specialist / SCRUM Manager
+                      <p class="text-muted text-sm"><b>About: </b> Full Stack / Software Specialist / SCRUM Manager
                       </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> City:
@@ -142,74 +210,6 @@
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <!-- General Contact Form -->
-            <div class="col-md-12">
-              <div class="card card-info">
-                <div class="card-header">
-                  <h3 class="card-title">General contact form</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form #contactForm="ngForm">
-                  <div class="card-body">
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
-                               [(ngModel)]="contact.name" #name="ngModel">
-                        <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-                          <div *ngIf="name.errors.required">
-                            Name is required
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
-                               [(ngModel)]="contact.email" #email="ngModel" required>
-                        <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-                          <div *ngIf="email.errors.required">
-                            Email is required
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group col-md-12">
-                        <label for="subject">Subject</label>
-                        <select class="custom-select" id="subject" name="subject"
-                                [(ngModel)]="contact.subject" #subject="ngModel">
-                          <option>Create a new club</option>
-                          <option>Feedback</option>
-                          <option [selected]="">Single contact</option>
-                          <option>Other</option>
-                        </select>
-                        <div class="alert-danger" *ngIf="subject.invalid && (subject.dirty || subject.touched)">
-                          <div *ngIf="subject.errors.required">
-                            Subject is required
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group col-md-12">
-                        <label>Message</label>
-                        <textarea class="form-control" rows="3" minlength="5" placeholder="Enter ..." name="message"
-                                  [(ngModel)]="contact.message" #message="ngModel"></textarea>
-                        <div class="alert-danger" *ngIf="message.invalid && (message.dirty || message.touched)">
-                          <div *ngIf="subject.errors.required">
-                            Subject is required
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <button class="btn btn-info float-right px-3" role="button" (click)='sendMessage()'
-                              [disabled]="!contactForm.form.valid">Send messsage</button>
-                    </div>
-                  </div><!-- /.card-body -->
-                </form>
               </div>
             </div>
 
