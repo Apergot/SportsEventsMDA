@@ -36,6 +36,7 @@ export class RivalryFormComponent implements OnInit {
   }
 
   create() {
+    console.log(this.rivalry);
     this.rivalryService.create(this.rivalry).subscribe(
       () => {
         this.router.navigate(['/rivalries']);

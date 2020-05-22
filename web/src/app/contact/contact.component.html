@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row mb-2">
         <div class="col-sm-12">
-          <h1 class="m-0 text-dark">Contact - Who we are</h1>
+          <h1 class="m-0 text-dark">{{title}}</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -158,18 +158,20 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-                        <div class="alert-danger" *ngIf="contactForm.invalid && (contactForm.dirty || contactForm.touched)">
-                          <div *ngIf="contactForm.errors.required">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                               [(ngModel)]="contact.name" #name="ngModel">
+                        <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                          <div *ngIf="name.errors.required">
                             Name is required
                           </div>
                         </div>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                        <div class="alert-danger" *ngIf="contactForm.invalid && (contactForm.dirty || contactForm.touched)">
-                          <div *ngIf="contactForm.errors.required">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                               [(ngModel)]="contact.email" #email="ngModel" required>
+                        <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                          <div *ngIf="email.errors.required">
                             Email is required
                           </div>
                         </div>
@@ -177,17 +179,29 @@
 
                       <div class="form-group col-md-12">
                         <label for="subject">Subject</label>
-                        <select class="custom-select" id="subject" name="subject" required>
+                        <select class="custom-select" id="subject" name="subject"
+                                [(ngModel)]="contact.subject" #subject="ngModel">
                           <option>Create a new club</option>
                           <option>Feedback</option>
-                          <option selected>Single contact</option>
+                          <option [selected]="">Single contact</option>
                           <option>Other</option>
                         </select>
+                        <div class="alert-danger" *ngIf="subject.invalid && (subject.dirty || subject.touched)">
+                          <div *ngIf="subject.errors.required">
+                            Subject is required
+                          </div>
+                        </div>
                       </div>
 
                       <div class="form-group col-md-12">
                         <label>Message</label>
-                        <textarea class="form-control" rows="3" minlength="5" placeholder="Enter ..." required></textarea>
+                        <textarea class="form-control" rows="3" minlength="5" placeholder="Enter ..." name="message"
+                                  [(ngModel)]="contact.message" #message="ngModel"></textarea>
+                        <div class="alert-danger" *ngIf="message.invalid && (message.dirty || message.touched)">
+                          <div *ngIf="subject.errors.required">
+                            Subject is required
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div>

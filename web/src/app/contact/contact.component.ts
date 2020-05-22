@@ -1,26 +1,49 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Contact} from './contact';
+import {ContactService} from './contact.service';
 import {RivalryService} from '../rivalries/rivalry.service';
-import {Router} from '@angular/router';
+import {UserService} from '../users/user.service';
 
 declare const toast: any;
 
 @Component({
   selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  templateUrl: './contact.component.html'
 })
 export class ContactComponent implements OnInit {
+  contact: Contact = new Contact();
+  title = 'Contact - Who we are';
 
   errors: string[];
 
-  constructor(private router: Router) {
+  constructor(
+    private contactService: ContactService,
+    private userService: UserService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
+    console.log('GO IN ...');
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const id = +params.get('id');
+      if (id) {
+        this.userService.getUser(id).subscribe((user) => {
+          this.contact.name = user.firstname + ' ' + user.lastname;
+          this.contact.email = user.email;
+          console.log(user);
+        });
+      }
+    });
   }
 
   sendMessage() {
-    /*this.rivalryService.create(this.rivalry).subscribe(
+    console.log(this.contact);
+    console.log(this.contact.name + ' ' + this.contact.email + ' ' + this.contact.subject + ' ' + this.contact.message);
+
+    this.contactService.sendContactForm(this.contact).subscribe(
       () => {
         this.router.navigate(['/contact']);
         toast().fire({
@@ -37,7 +60,7 @@ export class ContactComponent implements OnInit {
           title: 'Server error: ' + err.status
         });
       }
-    );*/
+    );
   }
 
 }
