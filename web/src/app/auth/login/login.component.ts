@@ -4,6 +4,8 @@ import swal from 'sweetalert2';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
+declare const toast: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
@@ -30,7 +32,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }, err => {
         if (err.status === 400) {
-          swal.fire('Login error', `${err.status}`, 'error');
+          toast().fire({
+            icon: 'error',
+            title: 'Server error: ' + err.status
+          });
         }
       }
     );

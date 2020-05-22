@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Rivalry} from '../rivalry';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RivalryService} from '../rivalry.service';
-import swal from 'sweetalert2';
 
 declare const toast: any;
 
