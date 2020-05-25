@@ -3,7 +3,7 @@ package com.mdasports.sportseventsweb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/*Sprint 2 22/05/2020*/
+/*Sprint 2 25/05/2020*/
 @SpringBootApplication
 public class SportseventswebApplication {
 
