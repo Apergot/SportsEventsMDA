@@ -32,11 +32,12 @@ const routes: Routes = [
 
   // Admin routes goes here here
   {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     children: [
       {path: 'dashboard', component: DashboardComponent},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: 'rivalries', component: RivalriesComponent},
       {path: 'rivalries/form', component: RivalryFormComponent},
       {path: 'rivalries/form/:id', component: RivalryFormComponent},
