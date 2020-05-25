@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Rivalry} from '../rivalry';
+import {Rivalry} from '../../rivalry';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RivalryService} from '../rivalry.service';
+import {RivalryService} from '../../rivalry.service';
 
 declare const toast: any;
 

@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Rivalry} from './rivalry';
-import {RivalryService} from './rivalry.service';
+import {Rivalry} from '../rivalry';
+import {RivalryService} from '../rivalry.service';
 import swal from 'sweetalert2';
 
 declare const toast: any;
 
 @Component({
-  selector: 'app-rivalries',
-  templateUrl: './rivalries.component.html'
+  selector: 'app-admin-rivalries',
+  templateUrl: './admin-rivalries.component.html'
 })
-export class RivalriesComponent implements OnInit {
+export class AdminRivalriesComponent implements OnInit {
   rivalries: Rivalry[];
 
   constructor(private rivalryService: RivalryService) {

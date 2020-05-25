@@ -10,11 +10,12 @@ import {ContactComponent} from './contact/contact.component';
 import {UsersComponent} from './users/users.component';
 import {UserFormComponent} from './users/user-form/user-form.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {RivalriesComponent} from './rivalries/rivalries.component';
+import {AdminRivalriesComponent} from './rivalries/admin-rivalries/admin-rivalries.component';
 
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
-import {RivalryFormComponent} from './rivalries/rivalry-form/rivalry-form.component';
+import {RivalryFormComponent} from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
+import {SiteRivalriesComponent} from './rivalries/site-rivalries/site-rivalries.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     children: [
       {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path: 'rivalries', component: SiteRivalriesComponent},
       {path: 'contact', component: ContactComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent}
@@ -38,7 +40,7 @@ const routes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      {path: 'rivalries', component: RivalriesComponent},
+      {path: 'rivalries', component: AdminRivalriesComponent},
       {path: 'rivalries/form', component: RivalryFormComponent},
       {path: 'rivalries/form/:id', component: RivalryFormComponent},
       {path: 'users', component: UsersComponent},
