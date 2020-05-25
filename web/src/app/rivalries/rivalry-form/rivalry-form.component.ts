@@ -38,7 +38,7 @@ export class RivalryFormComponent implements OnInit {
   create() {
     this.rivalryService.create(this.rivalry).subscribe(
       () => {
-        this.router.navigate(['/rivalries']);
+        this.router.navigate(['/admin/rivalries']);
         toast().fire({
           icon: 'success',
           title: `Rivalry has been created successfully`
@@ -59,7 +59,7 @@ export class RivalryFormComponent implements OnInit {
   update() {
     this.rivalryService.update(this.rivalry).subscribe(
       () => {
-        this.router.navigate(['/rivalries']);
+        this.router.navigate(['/admin/rivalries']);
         toast().fire({
           icon: 'success',
           title: `Rivalry has been updated successfully`,
