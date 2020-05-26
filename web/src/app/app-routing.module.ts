@@ -11,10 +11,12 @@ import {UsersComponent} from './users/users.component';
 import {UserFormComponent} from './users/user-form/user-form.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RivalriesComponent} from './rivalries/rivalries.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+//import {RivalryFormComponent} from './rivalry-form/rivalry-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
-import {LoginComponent} from './auth/login/login.component';
-import {RegisterComponent} from './auth/register/register.component';
-import {RivalryFormComponent} from './rivalries/rivalry-form/rivalry-form.component';
+
 
 
 const routes: Routes = [
@@ -36,13 +38,14 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'rivalries', component: RivalriesComponent},
-      {path: 'rivalries/form', component: RivalryFormComponent},
-      {path: 'rivalries/form/:id', component: RivalryFormComponent},
-      {path: 'users', component: UsersComponent},
-      {path: 'users/form', component: UserFormComponent},
-      {path: 'users/form/:id', component: UserFormComponent}
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'rivalries', component: RivalriesComponent },
+     // { path: 'rivalries/form', component: RivalryFormComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'users/form', component: UserFormComponent },
+      { path: 'users/form/:id', component: UserFormComponent },
+      { path: 'profiles', component: ProfileComponent},
+     // {path: 'rivalries/form/:id', component: RivalryFormComponent},
     ]
   },
 
