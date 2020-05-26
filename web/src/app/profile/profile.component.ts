@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../users/user';
-import { UserService } from '../users/user.service';
+import {AuthService} from '../auth/auth.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -8,10 +9,15 @@ import { UserService } from '../users/user.service';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  user: User = new User();
+  user: User ;
   title = 'Profile';
-  
-  ngOnInit(): void {
-    
+  errors: string[];
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.user = new User();
+  }
+
+  ngOnInit() {
+   this.user = this.authService.user;    
   }
 }
