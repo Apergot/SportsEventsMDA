@@ -7,7 +7,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   user: User = new User();
@@ -20,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
+    /*this.activatedRoute.paramMap.subscribe((params) => {
       const id = +params.get('id');
       if (id) {
         this.title = 'Update user';
@@ -29,6 +28,6 @@ export class ProfileComponent implements OnInit {
           console.log(user);
         });
       }
-    });
+    });*/
   }
 }
