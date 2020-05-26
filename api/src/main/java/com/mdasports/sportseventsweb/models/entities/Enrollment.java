@@ -63,8 +63,8 @@ public class Enrollment implements Serializable {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createAt) {
-        this.createdAt = createAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public State getState() {
