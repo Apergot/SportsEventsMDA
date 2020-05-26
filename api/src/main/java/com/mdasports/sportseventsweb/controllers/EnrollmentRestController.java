@@ -16,7 +16,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +37,7 @@ public class EnrollmentRestController {
         Pageable pageable = PageRequest.of(page, 4);
         return enrollmentService.findAll(pageable);
     }
-    @Secured({"ROLE_ADMIN","ROLE_USER"})
+    //@Secured({"ROLE_ADMIN","ROLE_USER"})
     @PostMapping("/enrollments")
     private ResponseEntity<?> create(@Valid @RequestBody Enrollment enrollment, BindingResult result){
 
@@ -67,7 +66,7 @@ public class EnrollmentRestController {
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
-    @Secured({"ROLE_USER"})
+    //@Secured({"ROLE_USER"})
     @DeleteMapping("/enrollments/{id}")
     private ResponseEntity<?> delete(@PathVariable Long id){
         Map<String, Object> map = new HashMap<>();
