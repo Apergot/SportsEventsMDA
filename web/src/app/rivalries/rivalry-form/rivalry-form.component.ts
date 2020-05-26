@@ -1,15 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Rivalry} from '../rivalries/rivalry';
+import {Rivalry} from '../rivalry';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RivalryService} from '../rivalries/rivalry.service';
-import swal from 'sweetalert2';
+import {RivalryService} from '../rivalry.service';
 
-declare const datepicker: any;
+declare const toast: any;
 
 @Component({
   selector: 'app-rivalry-form',
-  templateUrl: './rivalry-form.component.html',
-  styleUrls: ['./rivalry-form.component.css']
+  templateUrl: './rivalry-form.component.html'
 })
 export class RivalryFormComponent implements OnInit {
   rivalry: Rivalry = new Rivalry();
@@ -37,20 +35,23 @@ export class RivalryFormComponent implements OnInit {
     });
   }
 
-  onClickDatepicker() {
-    datepicker();
-  }
-
   create() {
     this.rivalryService.create(this.rivalry).subscribe(
       () => {
         this.router.navigate(['/rivalries']);
-        swal.fire('New rivalry', `Rivalry has been created successfully`, 'success');
+        toast().fire({
+          icon: 'success',
+          title: `Rivalry has been created successfully`
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
       }
     );
   }
@@ -59,16 +60,19 @@ export class RivalryFormComponent implements OnInit {
     this.rivalryService.update(this.rivalry).subscribe(
       () => {
         this.router.navigate(['/rivalries']);
-        swal.fire(
-          'Rivalry updated',
-          `Rivalry has been updated successfully`,
-          'success'
-        );
+        toast().fire({
+          icon: 'success',
+          title: `Rivalry has been updated successfully`,
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
       }
     );
   }

@@ -15,7 +15,8 @@
             <div class="card-body">
               <form #signInForm="ngForm">
                 <div class="input-group mb-3">
-                  <input [(ngModel)]="user.username" type="email" class="form-control" name="username" id="username" placeholder="Username" autofocus required>
+                  <input [(ngModel)]="user.username" type="email" class="form-control" name="username" id="username"
+                         placeholder="Username" autofocus required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-user"></span>
@@ -23,7 +24,8 @@
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input [(ngModel)]="user.password" type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                  <input [(ngModel)]="user.password" type="password" class="form-control" name="password" id="password"
+                         placeholder="Password" required>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-lock"></span>
@@ -32,7 +34,9 @@
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <button type="submit" class="btn btn-primary btn-block" role="button" (click)='login()' [disabled]="!signInForm.form.valid">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block" role="button" (click)='login()'
+                            [disabled]="!signInForm.form.valid">Sign In
+                    </button>
                   </div>
                 </div>
               </form>

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,9 @@ public class UserRestController {
 
     @Autowired
     private IAdminUsersService iAdminUsersService;
+
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
 
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/users")
@@ -75,6 +79,13 @@ public class UserRestController {
         }
 
         try {
+            String password = user.getPassword();
+            String passwordBcrypt = null;
+            for (int i = 0; i< 4; i++) {
+                passwordBcrypt = passwordEncoder.encode(password);
+                System.out.println(passwordBcrypt);
+            }
+            user.setPassword(passwordBcrypt);
             newUser = iAdminUsersService.save(user);
         } catch (DataAccessException e) {
             map.put("message", "Error inserting into database");

@@ -72,12 +72,12 @@
             </div>
 
             <div class="form-group col-md-2">
-              <label for="date_">Rivalry date</label>
-              <div class="input-group date" id="date_" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#date_" name="date_"
-                       [(ngModel)]="rivalry.rivalrydate" #date_="ngModel">
-                <div class="input-group-append" data-target="#date_" data-toggle="datetimepicker">
-                  <div (click)='onClickDatepicker()' class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+              <label for="rivalrydate">rivalrydate</label>
+              <input type="date" class="form-control" id="rivalrydate" name="rivalrydate" placeholder="rivalrydate"
+                     [(ngModel)]="rivalry.rivalrydate" #rivalrydate="ngModel" required>
+              <div class="alert-danger" *ngIf="rivalrydate.invalid && (rivalrydate.dirty || rivalrydate.touched)">
+                <div *ngIf="rivalrydate.errors.required">
+                  rivalrydate is required
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
             <div class="form-group col-md-12">
               <label for="description">Description</label>
               <textarea class="form-control" rows="3" id="description" name="description" placeholder="Description"
-                        [(ngModel)]="rivalry.description" #description="ngModel" placeholder="Enter ..."
+                        [(ngModel)]="rivalry.description" #description="ngModel" placeholder="Enter a description ..."
                         required></textarea>
               <div class="alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
                 <div *ngIf="description.errors.required">
@@ -106,7 +106,7 @@
                     [disabled]="!rivalryForm.form.valid">Create
             </button>
             <ng-template #elseBlock>
-              <button class="btn btn-success float-right px-5" role="button"
+              <button class="btn btn-success float-right px-5" role="button" (click)='update()'
                       [disabled]="!rivalryForm.form.valid">Update
               </button>
             </ng-template>

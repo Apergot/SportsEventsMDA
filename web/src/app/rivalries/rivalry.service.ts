@@ -4,7 +4,9 @@ import {Observable, throwError} from 'rxjs';
 import {Rivalry} from './rivalry';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
-import { AuthService } from '../auth/auth.service';
+import {AuthService} from '../auth/auth.service';
+
+declare const toast: any;
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +16,21 @@ export class RivalryService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient, 
-    private authService: AuthService) {
+  constructor(private http: HttpClient,
+              private authService: AuthService) {
   }
 
   private addAuthHeader() {
-    let token = this.authService.token;
+    const token = this.authService.token;
     if (token != null) {
       return this.httpHeaders.append('Authorization', 'Bearer ' + token);
     }
     return this.httpHeaders;
   }
 
-  
-
   getRivalries(): Observable<Rivalry[]> {
     return this.http
-      .get(this.urlEndPoint, { headers: this.addAuthHeader() })
+      .get(this.urlEndPoint, {headers: this.addAuthHeader()})
       .pipe(map((response) => response as Rivalry[]));
   }
 
@@ -53,9 +53,7 @@ export class RivalryService {
 
   update(rivalry: Rivalry): Observable<Rivalry> {
     return this.http
-      .put<Rivalry>(`${this.urlEndPoint}/${rivalry.id}`, rivalry, {
-        headers: this.addAuthHeader(),
-      })
+      .put<Rivalry>(`${this.urlEndPoint}/${rivalry.id}`, rivalry, {headers: this.addAuthHeader()})
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -69,8 +67,20 @@ export class RivalryService {
       );
   }
 
+  delete(id: number): Observable<Rivalry> {
+    return this.http
+      .delete<Rivalry>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()})
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.message);
+          swal.fire(e.error.message, e.error.error, 'error');
+          return throwError(e);
+        })
+      );
+  }
+
   getRivalry(id): Observable<Rivalry> {
-    return this.http.get<Rivalry>(`${this.urlEndPoint}/${id}`).pipe(
+    return this.http.get<Rivalry>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()}).pipe(
       catchError((e) => {
         console.error(e.error.mensaje);
         swal.fire('Error al editar', e.error.mensaje, 'error');

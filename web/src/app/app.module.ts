@@ -10,6 +10,7 @@ import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component
 import { SiteHeaderComponent } from './_layout/site-header/site-header.component';
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
@@ -19,9 +20,9 @@ import { AdminSidebarComponent } from './_layout/admin-sidebar/admin-sidebar.com
 import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
-import { UserFormComponent } from './user-form/user-form.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
 import { RivalriesComponent } from './rivalries/rivalries.component';
-import { RivalryFormComponent } from './rivalry-form/rivalry-form.component';
+import { RivalryFormComponent } from './rivalries/rivalry-form/rivalry-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -32,6 +33,7 @@ import { ProfileComponent } from './profile/profile.component';
     SiteHeaderComponent,
     SiteFooterComponent,
     HomeComponent,
+    ContactComponent,
     LoginComponent,
     RegisterComponent,
     AdminLayoutComponent,

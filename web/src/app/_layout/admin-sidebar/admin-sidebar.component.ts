@@ -3,8 +3,7 @@ import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-admin-sidebar',
-  templateUrl: './admin-sidebar.component.html',
-  styleUrls: ['./admin-sidebar.component.css']
+  templateUrl: './admin-sidebar.component.html'
 })
 export class AdminSidebarComponent implements OnInit {
   userDisplayName;
@@ -13,7 +12,6 @@ export class AdminSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userDisplayName = this.authService.user.username + ' ' + this.authService.user.lastname;
+    this.userDisplayName = this.authService.user.username;
   }
-
 }

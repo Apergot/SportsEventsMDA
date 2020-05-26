@@ -44,7 +44,7 @@ public class AdminRivalryServiceImpIntegrationTest {
         rivalry.setDescription("Competición de atletismo");
         rivalry.setLocation("Las Palmas");
         rivalry.setRivalryname("LPAthletism");
-        rivalry.setDate(new Date());
+        rivalry.setRivalrydate(new Date());
         rivalry.setCapacity(2000);
         rivalry.setId(1L);
 

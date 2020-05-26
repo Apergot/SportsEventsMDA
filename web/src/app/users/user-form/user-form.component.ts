@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../users/user';
-import { Role } from '../users/role';
-import { UserService } from '../users/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert2';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../user';
+import {Role} from '../role';
+import {UserService} from '../user.service';
+import {Router, ActivatedRoute} from '@angular/router';
+
+declare const toast: any;
 
 @Component({
   selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css'],
+  templateUrl: './user-form.component.html'
 })
 export class UserFormComponent implements OnInit {
   user: User = new User();
@@ -17,15 +17,16 @@ export class UserFormComponent implements OnInit {
   errors: string[];
 
   roles: Role[] = [
-    { id: 1, name: 'ROLE_USER' },
-    { id: 2, name: 'ROLE_ADMIN' },
+    {id: 1, name: 'ROLE_USER'},
+    {id: 2, name: 'ROLE_ADMIN'},
   ];
 
   constructor(
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -44,12 +45,19 @@ export class UserFormComponent implements OnInit {
     this.userService.create(this.user).subscribe(
       () => {
         this.router.navigate(['/users']);
-        swal.fire('New user', `User has been created successfully`, 'success');
+        toast().fire({
+          icon: 'success',
+          title: `User has been created successfully`
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
       }
     );
   }
@@ -58,16 +66,19 @@ export class UserFormComponent implements OnInit {
     this.userService.update(this.user).subscribe(
       () => {
         this.router.navigate(['/users']);
-        swal.fire(
-          'User updated',
-          `User has been updated successfully`,
-          'success'
-        );
+        toast().fire({
+          icon: 'success',
+          title: `User has been updated successfully`
+        });
       },
       (err) => {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
       }
     );
   }

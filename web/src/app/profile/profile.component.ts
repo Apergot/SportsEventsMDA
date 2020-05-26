@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../users/user';
 import { UserService } from '../users/user.service';
 import { Role } from '../users/role';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,11 +10,25 @@ import { Role } from '../users/role';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  users: User[];
+  user: User = new User();
+  title = 'Profile';
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((users) => (this.users = users));
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const id = +params.get('id');
+      if (id) {
+        this.title = 'Update user';
+        this.userService.getUser(id).subscribe((user) => {
+          this.user = user;
+          console.log(user);
+        });
+      }
+    });
   }
 }

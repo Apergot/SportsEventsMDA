@@ -7,7 +7,8 @@
       <span class="brand-text font-weight-light">MDA Project</span>
     </a>
 
-    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -18,6 +19,9 @@
           <a href="/" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
+          <a href="/contact" class="nav-link">Contact</a>
+        </li>
+        <li *ngIf="authService.isAuthenticated()" class="nav-item">
           <a href="/dashboard" class="nav-link">Dashboard</a>
         </li>
       </ul>
@@ -30,8 +34,9 @@
             Sign in
           </a>
         </li>
-        <li *ngIf="authService.isAuthenticated()" class="nav-item">
-          <a class="nav-link" href="#">
+        <li class="nav-item">
+          <a *ngIf="authService.isAuthenticated()" class="nav-link" data-widget="control-sidebar" data-slide="true"
+             href="#" role="button" (click)="signOut()">
             <i class="fas fa-sign-out-alt"></i>
             Sign out
           </a>

@@ -9,7 +9,9 @@ import {Role} from '../users/role';
 })
 export class AuthService {
 
+  // tslint:disable-next-line:variable-name
   private _user: User;
+  // tslint:disable-next-line:variable-name
   private _token: string;
 
   constructor(private http: HttpClient) {
@@ -42,7 +44,7 @@ export class AuthService {
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + credenciales
+      Authorization: 'Basic ' + credenciales
     });
 
     const params = new URLSearchParams();
@@ -51,6 +53,14 @@ export class AuthService {
     params.set('password', user.password);
     console.log(params.toString());
     return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
+  }
+
+  logout(): void {
+    this._token = null;
+    this._user = null;
+    sessionStorage.clear();
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
   }
 
   guardUser(accessToken: string): void {
@@ -85,11 +95,4 @@ export class AuthService {
     return this.user.roles.includes(role);
   }
 
-  logout(): void {
-    this._token = null;
-    this._user = null;
-    sessionStorage.clear();
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-  }
 }
