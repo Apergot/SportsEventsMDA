@@ -4,6 +4,10 @@ import {User} from '../../../users/user';
 import {Rivalry} from '../../../rivalries/rivalry';
 import {RivalryService} from '../../../rivalries/rivalry.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Enrollment} from '../../enrollment';
+import {EnrollmentService} from '../../enrollment.service';
+
+declare const toast: any;
 
 @Component({
   selector: 'app-enrollments-form',
@@ -12,11 +16,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EnrollmentsFormComponent implements OnInit {
   rivalry: Rivalry = new Rivalry();
   user: User = new User();
+  enrollment: Enrollment = new Enrollment();
 
   errors: string[];
 
   constructor(
     private authService: AuthService,
+    private enrollmentService: EnrollmentService,
     private rivalryService: RivalryService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
@@ -38,7 +44,25 @@ export class EnrollmentsFormComponent implements OnInit {
   }
 
   enroll() {
-    console.log('sd');
+    console.log(this.enrollment);
+    this.enrollmentService.create(this.enrollment).subscribe(
+      () => {
+        this.router.navigate(['rivalries']);
+        toast().fire({
+          icon: 'success',
+          title: `Your enrollment has been created successfully`
+        });
+      },
+      (err) => {
+        this.errors = err.error.errors as string[];
+        console.error('Backend code error: ' + err.status);
+        console.error(err.error.errors);
+        toast().fire({
+          icon: 'error',
+          title: 'Server error: ' + err.status
+        });
+      }
+    );
   }
 
 }

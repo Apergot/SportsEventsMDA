@@ -67,6 +67,10 @@
 
             <div class="col-12">
               <form #enrollmentForm="ngForm">
+                <div >
+                  <input type="number" id="rivalryid" name="rivalryid" [(ngModel)]="enrollment.rivalry_id" #rivalry_id="ngModel" value="{{rivalry.id}}" />
+                  <input type="number" id="userid" name="userid" [(ngModel)]="enrollment.user_id" #user_id="ngModel" value="{{user.id}}" />
+                </div>
                 <div>
                   <button class="btn btn-info float-right" role="button" (click)='enroll()'
                           [disabled]="!enrollmentForm.form.valid">Enroll
