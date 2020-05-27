@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface IEnrollmentService {
 
-    public List<Enrollment> findAll();
-    public Page<Enrollment> findAll(Pageable pageable);
-    public Enrollment findById(Long id);
-    public Enrollment save(Enrollment enrollment);
-    public void remove(Enrollment enrollment);
+    List<Enrollment> findAll();
+    Page<Enrollment> findAll(Pageable pageable);
+    Enrollment findById(Long id);
+    Enrollment save(Enrollment enrollment);
+    void remove(Enrollment enrollment);
 }

@@ -10,7 +10,7 @@ INSERT INTO rivalries (rivalryname, location, capacity, rivalrydate, description
 INSERT INTO rivalries (rivalryname, location, capacity, rivalrydate, description) VALUES ('Torneo de Halterofilia', 'Arucas', 5000, '2020-05-20', 'Competición de halterofilia');
 INSERT INTO rivalries (rivalryname, location, capacity, rivalrydate, description) VALUES ('Torneo de Patinaje', 'Gáldar', 1200, '2020-05-20', 'Competición de patinaje');
 
-INSERT INTO enrollments (rivalry_id, user_id, state, enrollmentdate) VALUES (1, 3, 'ENABLED', '2020-05-27');
+INSERT INTO enrollments (rivalry_id, user_id, state) VALUES (1, 3, 'ENABLED');
 
 INSERT INTO roles (name) VALUES ('ROLE_USER');
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
