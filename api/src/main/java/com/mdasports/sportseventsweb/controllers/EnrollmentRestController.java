@@ -52,10 +52,10 @@ public class EnrollmentRestController {
             return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         }
         try{
-            createdEnrollment.setUser_id(enrollment.getUser_id());
+            /*createdEnrollment.setUser_id(enrollment.getUser_id());
             createdEnrollment.setRivalry_id(enrollment.getRivalry_id());
-            createdEnrollment.setState(State.ENABLED);
-            enrollmentService.save(createdEnrollment);
+            createdEnrollment.setState(State.ENABLED);*/
+            createdEnrollment = enrollmentService.save(enrollment);
         }catch (DataAccessException e){
             map.put("message", "Error inserting into database");
             map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
