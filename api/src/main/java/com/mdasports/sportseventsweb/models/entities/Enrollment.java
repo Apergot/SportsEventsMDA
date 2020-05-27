@@ -26,6 +26,7 @@ public class Enrollment implements Serializable {
     @Enumerated(EnumType.STRING)
     private State state;
 
+    @CreationTimestamp
     @Temporal(TemporalType.DATE)
     private Date enrollmentdDate;
 
