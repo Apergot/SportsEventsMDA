@@ -17,7 +17,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import {RivalryFormComponent} from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
 import {SiteRivalriesComponent} from './rivalries/site-rivalries/site-rivalries.component';
 import {ProfileComponent} from './profile/profile.component';
-import {EnrollmentsComponent} from './enrollments/enrollments.component';
+import {EnrollmentsFormComponent} from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
 
 
 const routes: Routes = [
@@ -28,7 +28,7 @@ const routes: Routes = [
     children: [
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'contact', component: ContactComponent},
-      {path: 'enrollment/:id', component: EnrollmentsComponent, canActivate: [AuthGuard]},
+      {path: 'enrollments/:id', component: EnrollmentsFormComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'rivalries', component: SiteRivalriesComponent},

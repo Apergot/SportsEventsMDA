@@ -4,7 +4,8 @@ import {RivalryService} from '../rivalry.service';
 
 @Component({
   selector: 'app-site-rivalries',
-  templateUrl: './site-rivalries.component.html'
+  templateUrl: './site-rivalries.component.html',
+  styleUrls: ['./site-rivalries.component.css']
 })
 export class SiteRivalriesComponent implements OnInit {
   rivalries: Rivalry[];

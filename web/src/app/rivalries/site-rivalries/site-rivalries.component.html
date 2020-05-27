@@ -22,25 +22,30 @@
 
       <div class="row">
         <div class="col-md-3 col-sm-6 col-12" *ngFor="let rivalry of rivalries">
-          <div class="info-box bg-gradient-info">
-            <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">{{rivalry.rivalryname}}</span>
-              <span class="info-box-number">{{rivalry.capacity}}</span>
+          <div class="small-box bg-info">
+            <div class="info-box bg-gradient-info">
+              <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
 
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-              <span class="progress-description">
+              <div class="info-box-content">
+                <span class="info-box-text">{{rivalry.rivalryname}}</span>
+                <span class="info-box-number">{{rivalry.capacity}}</span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
                   70% are enrolled
                 </span>
-            </div>
-            <!-- /.info-box-content -->
+              </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+
+            <a class="small-box-footer" [routerLink]="['/enrollments', rivalry.id]">
+              Enrollment <i class="fas fa-arrow-circle-right"></i>
+            </a>
           </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
+
+        </div><!-- /.col -->
       </div>
 
     </div><!-- /.container-fluid -->
