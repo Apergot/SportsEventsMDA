@@ -44,7 +44,7 @@ export class UserFormComponent implements OnInit {
   create() {
     this.userService.create(this.user).subscribe(
       () => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin/users']);
         toast().fire({
           icon: 'success',
           title: `User has been created successfully`
@@ -65,7 +65,7 @@ export class UserFormComponent implements OnInit {
   update() {
     this.userService.update(this.user).subscribe(
       () => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin/users']);
         toast().fire({
           icon: 'success',
           title: `User has been updated successfully`
