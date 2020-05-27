@@ -7,10 +7,10 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IAdminUsersService {
-    public List<User> findAll();
-    public Page<User> findAll(Pageable pageable);
-    public User findById(Long id);
-    public User save(User user);
-    public void delete(Long id);
-    public User getUserByUsername(String name);
+    List<User> findAll();
+    Page<User> findAll(Pageable pageable);
+    User findById(Long id);
+    User save(User user);
+    void delete(Long id);
+    User getUserByUsername(String name);
 }

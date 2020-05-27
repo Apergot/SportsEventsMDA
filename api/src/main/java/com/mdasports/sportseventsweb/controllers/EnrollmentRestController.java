@@ -37,7 +37,7 @@ public class EnrollmentRestController {
         Pageable pageable = PageRequest.of(page, 4);
         return enrollmentService.findAll(pageable);
     }
-    //@Secured({"ROLE_ADMIN","ROLE_USER"})
+
     @PostMapping("/enrollments")
     private ResponseEntity<?> create(@Valid @RequestBody Enrollment enrollment, BindingResult result){
 
@@ -52,9 +52,6 @@ public class EnrollmentRestController {
             return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         }
         try{
-            /*createdEnrollment.setUser_id(enrollment.getUser_id());
-            createdEnrollment.setRivalry_id(enrollment.getRivalry_id());
-            createdEnrollment.setState(State.ENABLED);*/
             createdEnrollment = enrollmentService.save(enrollment);
         }catch (DataAccessException e){
             map.put("message", "Error inserting into database");
@@ -66,7 +63,6 @@ public class EnrollmentRestController {
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
-    //@Secured({"ROLE_USER"})
     @DeleteMapping("/enrollments/{id}")
     private ResponseEntity<?> delete(@PathVariable Long id){
         Map<String, Object> map = new HashMap<>();
