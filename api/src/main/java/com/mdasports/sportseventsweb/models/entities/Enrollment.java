@@ -24,7 +24,7 @@ public class Enrollment implements Serializable {
     private Long user_id;
 
     @Enumerated(EnumType.STRING)
-    private State state;
+    private State state = State.ENABLED;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
