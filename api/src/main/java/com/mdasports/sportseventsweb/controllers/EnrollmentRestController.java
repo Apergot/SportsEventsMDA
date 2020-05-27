@@ -16,10 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -41,7 +38,7 @@ public class EnrollmentRestController {
     @PostMapping("/enrollments")
     private ResponseEntity<?> create(@Valid @RequestBody Enrollment enrollment, BindingResult result){
 
-        Enrollment createdEnrollment=null;
+        Enrollment createdEnrollment= new Enrollment();
         Map<String, Object> map = new HashMap<>();
         if (result.hasErrors()) {
             List<String> errors = new ArrayList<>();
@@ -55,6 +52,11 @@ public class EnrollmentRestController {
             createdEnrollment.setUser_id(enrollment.getUser_id());
             createdEnrollment.setRivalry_id(enrollment.getRivalry_id());
             createdEnrollment.setState(State.ENABLED);
+            createdEnrollment.setEnrollmentdDate(new Date());
+            System.out.println("Enrollment user id " + createdEnrollment.getUser_id());
+            System.out.println("Enrollment rivalry id " + createdEnrollment.getRivalry_id());
+            System.out.println("Enrollment date " + createdEnrollment.getEnrollmentdDate());
+            System.out.println("Enrollment state " + createdEnrollment.getState());
             enrollmentService.save(createdEnrollment);
         }catch (DataAccessException e){
             map.put("message", "Error inserting into database");
@@ -66,7 +68,7 @@ public class EnrollmentRestController {
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
-    //@Secured({"ROLE_USER"})
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("/enrollments/{id}")
     private ResponseEntity<?> delete(@PathVariable Long id){
         Map<String, Object> map = new HashMap<>();

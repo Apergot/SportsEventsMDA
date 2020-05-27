@@ -1,9 +1,12 @@
 package com.mdasports.sportseventsweb.models.entities;
 
 import com.mdasports.sportseventsweb.models.services.State;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,15 +26,8 @@ public class Enrollment implements Serializable {
     @Enumerated(EnumType.STRING)
     private State state;
 
-    //@NotNull(message = "it can not be empty")
-    //@Column(name="create_at")
     @Temporal(TemporalType.DATE)
-    private Date enrollmentdate;
-
-    /*@PrePersist
-    public void prePersist() {
-        createdAt = new Date();
-    }*/
+    private Date enrollmentdDate;
 
     public Long getId() {
         return id;
@@ -57,14 +53,6 @@ public class Enrollment implements Serializable {
         this.user_id = user_id;
     }
 
-    public Date getEnrollmentdate() {
-        return enrollmentdate;
-    }
-
-    public void setEnrollmentdate(Date enrollmentdate) {
-        this.enrollmentdate = enrollmentdate;
-    }
-
     public State getState() {
         return state;
     }
@@ -72,4 +60,13 @@ public class Enrollment implements Serializable {
     public void setState(State state) {
         this.state = state;
     }
+
+    public Date getEnrollmentdDate() {
+        return enrollmentdDate;
+    }
+
+    public void setEnrollmentdDate(Date enrollmentdDate) {
+        this.enrollmentdDate = enrollmentdDate;
+    }
+
 }
