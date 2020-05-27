@@ -1,6 +1,7 @@
 package com.mdasports.sportseventsweb.controllers;
 
 import com.mdasports.sportseventsweb.models.entities.Enrollment;
+import com.mdasports.sportseventsweb.models.services.EnrollmentServiceImp;
 import com.mdasports.sportseventsweb.models.services.IEnrollmentService;
 import com.mdasports.sportseventsweb.models.services.State;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,8 @@ public class EnrollmentRestController {
         Pageable pageable = PageRequest.of(page, 4);
         return enrollmentService.findAll(pageable);
     }
-    //@Secured({"ROLE_ADMIN","ROLE_USER"})
+
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @PostMapping("/enrollments")
     private ResponseEntity<?> create(@Valid @RequestBody Enrollment enrollment, BindingResult result){
 

@@ -69,4 +69,6 @@ public class Enrollment implements Serializable {
         this.enrollmentdDate = enrollmentdDate;
     }
 
+    private static final long serialVersionUID = 1L;
+
 }
