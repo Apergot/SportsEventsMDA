@@ -25,6 +25,7 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 import { AdminRivalriesComponent } from './rivalries/admin-rivalries/admin-rivalries.component';
 import { RivalryFormComponent } from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
 import { AuthComponent } from './auth/auth.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AuthComponent } from './auth/auth.component';
     RivalryFormComponent,
     AuthComponent,
     SiteRivalriesComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

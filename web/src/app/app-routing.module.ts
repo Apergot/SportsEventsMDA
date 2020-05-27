@@ -16,6 +16,7 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {RivalryFormComponent} from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
 import {SiteRivalriesComponent} from './rivalries/site-rivalries/site-rivalries.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
       {path: 'rivalries/form/:id', component: RivalryFormComponent},
       {path: 'users', component: UsersComponent},
       {path: 'users/form', component: UserFormComponent},
-      {path: 'users/form/:id', component: UserFormComponent}
+      {path: 'users/form/:id', component: UserFormComponent},
+      { path: 'profile', component: ProfileComponent}
     ]
   },
 
