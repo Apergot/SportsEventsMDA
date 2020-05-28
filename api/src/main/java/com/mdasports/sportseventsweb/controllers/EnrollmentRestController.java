@@ -77,4 +77,8 @@ public class EnrollmentRestController {
         map.put("message", "enrollment deleted successfully");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+    @GetMapping("/enrollments/{id}")
+    private List<Enrollment> getAllByUserId(@PathVariable Long id){
+        return enrollmentService.retrieveAllUsersId(id);
+    }
 }
