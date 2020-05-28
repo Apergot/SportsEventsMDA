@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin/dashboard']);
     }
   }
 
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
     this.authService.login(this.user).subscribe(response => {
         this.authService.guardUser(response.access_token);
         this.authService.guardToken(response.access_token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/admin/dashboard']);
       }
     );
   }

@@ -23,7 +23,8 @@ public class InfoAdditionalToken implements TokenEnhancer {
         User user = userService.findByUsername(oAuth2Authentication.getName());
         Map<String, Object> claims = new HashMap<>();
         claims.put("user_id", user.getId());
-        claims.put("fullname", user.getFirstname()+" "+user.getLastname());
+        claims.put("firstname", user.getFirstname());
+        claims.put("lastname", user.getLastname());
         claims.put("email", user.getEmail());
         ((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(claims);
         return oAuth2AccessToken;

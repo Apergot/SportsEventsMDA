@@ -1,0 +1,54 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-sm-12">
+          <h1 class="m-0 text-dark">Rivalries list</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container">
+
+      <div *ngIf="rivalries?.length==0" class="alert alert-info">
+        There are not rivalries!
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-12" *ngFor="let rivalry of rivalries">
+
+          <div class="small-box bg-info">
+            <div class="info-box bg-gradient-info">
+              <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">{{rivalry.rivalryname}}</span>
+                <span class="info-box-number">{{rivalry.capacity}}</span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                  70% are enrolled
+                </span>
+              </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+
+            <a class="small-box-footer" [routerLink]="['/enrollments', rivalry.id]">
+              Enrollment <i class="fas fa-arrow-circle-right"></i>
+            </a>
+          </div>
+
+        </div><!-- /.col -->
+      </div>
+
+    </div><!-- /.container-fluid -->
+  </div><!-- /.content -->
+
+</div><!-- /.content-wrapper -->

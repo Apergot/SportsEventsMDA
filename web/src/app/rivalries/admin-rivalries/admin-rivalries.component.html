@@ -17,7 +17,7 @@
     <div class="card border-primary mb-3">
 
       <div class="card-header">
-        <button class="btn btn-rounded btn-primary" [routerLink]="['/rivalries/form']">New rivalry</button>
+        <button class="btn btn-rounded btn-primary" [routerLink]="['/admin/rivalries/form']">New rivalry</button>
       </div>
 
       <div class="card-body text-primary">
@@ -51,7 +51,7 @@
               <td>{{rivalry.rivalrydate}}</td>
               <td>
                 <button type="button" name="edit" class="btn btn-warning"
-                        [routerLink]="['/rivalries/form', rivalry.id]">Edit
+                        [routerLink]="['/admin/rivalries/form', rivalry.id]">Edit
                 </button>
               </td>
               <td>

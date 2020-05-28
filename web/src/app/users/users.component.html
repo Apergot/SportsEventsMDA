@@ -17,7 +17,7 @@
     <div class="card border-primary mb-3">
 
       <div class="card-header">
-        <button class="btn btn-rounded btn-primary" [routerLink]="['/users/form']">New user</button>
+        <button class="btn btn-rounded btn-primary" [routerLink]="['/admin/users/form']">New user</button>
       </div>
 
       <div class="card-body text-primary">
@@ -51,7 +51,7 @@
                 <span>{{displayRoles(user.roles)}} </span>
               <td>
                 <button type="button" name="edit" class="btn btn-warning"
-                        [routerLink]="['/users/form', user.id]">Edit
+                        [routerLink]="['/admin/users/form', user.id]">Edit
                 </button>
               </td>
               <td>
