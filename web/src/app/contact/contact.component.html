@@ -43,11 +43,14 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                        <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" placeholder="Enter your email"
                                [(ngModel)]="contact.email" #email="ngModel" required>
                         <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                           <div *ngIf="email.errors.required">
                             Email is required
+                          </div>
+                          <div *ngIf="email.errors.pattern">
+                            Invalid email pattern
                           </div>
                         </div>
                       </div>

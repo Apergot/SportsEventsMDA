@@ -66,6 +66,7 @@ export class AuthService {
   guardUser(accessToken: string): void {
     const payload = this.getDatasToken(accessToken);
     this._user = new User();
+    this._user.id = payload.user_id;
     this._user.firstname = payload.firstname;
     this._user.lastname = payload.lastname;
     this._user.email = payload.email;

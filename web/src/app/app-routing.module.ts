@@ -10,13 +10,14 @@ import {ContactComponent} from './contact/contact.component';
 import {UsersComponent} from './users/users.component';
 import {UserFormComponent} from './users/user-form/user-form.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {RivalriesComponent} from './rivalries/rivalries.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-//import {RivalryFormComponent} from './rivalry-form/rivalry-form.component';
-import { ProfileComponent } from './profile/profile.component';
+import {AdminRivalriesComponent} from './rivalries/admin-rivalries/admin-rivalries.component';
 
-
+import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {RivalryFormComponent} from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
+import {SiteRivalriesComponent} from './rivalries/site-rivalries/site-rivalries.component';
+import {ProfileComponent} from './profile/profile.component';
+import {EnrollmentsFormComponent} from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
 
 
 const routes: Routes = [
@@ -27,25 +28,28 @@ const routes: Routes = [
     children: [
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'contact', component: ContactComponent},
+      {path: 'enrollments/:id', component: EnrollmentsFormComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent},
+      {path: 'rivalries', component: SiteRivalriesComponent},
     ]
   },
 
   // Admin routes goes here here
   {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'rivalries', component: RivalriesComponent },
-     // { path: 'rivalries/form', component: RivalryFormComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'users/form', component: UserFormComponent },
-      { path: 'users/form/:id', component: UserFormComponent },
-      { path: 'profiles', component: ProfileComponent},
-     // {path: 'rivalries/form/:id', component: RivalryFormComponent},
+      {path: 'dashboard', component: DashboardComponent},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: 'rivalries', component: AdminRivalriesComponent},
+      {path: 'rivalries/form', component: RivalryFormComponent},
+      {path: 'rivalries/form/:id', component: RivalryFormComponent},
+      {path: 'users', component: UsersComponent},
+      {path: 'users/form', component: UserFormComponent},
+      {path: 'users/form/:id', component: UserFormComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
   },
 

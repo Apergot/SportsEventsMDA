@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface IAdminRivalriesService {
 
-    public List<Rivalry> findAll();
-    public Page<Rivalry> findAll(Pageable pageable);
-    public Rivalry findById(Long id);
-    public Rivalry save(Rivalry rivalry);
-    public void delete(Long id);
-    public Rivalry getRivalryByName(String name);
+    List<Rivalry> findAll();
+    Page<Rivalry> findAll(Pageable pageable);
+    Rivalry findById(Long id);
+    Rivalry save(Rivalry rivalry);
+    void delete(Long id);
+    Rivalry getRivalryByName(String name);
 }
