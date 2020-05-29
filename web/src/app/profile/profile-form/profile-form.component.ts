@@ -27,7 +27,6 @@ export class ProfileFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {
-    this.user = new User();
   }
 
   ngOnInit(): void {
@@ -63,6 +62,7 @@ export class ProfileFormComponent implements OnInit {
         });
       }
     );
+    this.authService._user = this.user;
   }
 
   sessionUpdate(): void {

@@ -32,9 +32,7 @@ const routes: Routes = [
       {path: 'enrollments/:id', component: EnrollmentsFormComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'rivalries', component: SiteRivalriesComponent},
-      {path: 'profile', component: ProfileComponent},
-      {path: 'profile/form/:id', component: ProfileFormComponent}
+      {path: 'rivalries', component: SiteRivalriesComponent}
     ]
   },
 

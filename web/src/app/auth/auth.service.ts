@@ -10,7 +10,7 @@ import {Role} from '../users/role';
 export class AuthService {
 
   // tslint:disable-next-line:variable-name
-  private _user: User;
+  public _user: User;
   // tslint:disable-next-line:variable-name
   private _token: string;
 

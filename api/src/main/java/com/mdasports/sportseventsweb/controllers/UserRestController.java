@@ -44,7 +44,7 @@ public class UserRestController {
         return iAdminUsersService.findAll(pageable);
     }
 
-    @Secured({"ROLE_ADMIN"})
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/users/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){
         User user = null;
