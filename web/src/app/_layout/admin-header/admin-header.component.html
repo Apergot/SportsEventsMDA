@@ -8,7 +8,7 @@
       </a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a class="nav-link" routerLink="/">Home</a>
+      <a href="/" class="nav-link">Home</a>
     </li>
   </ul>
 
@@ -27,14 +27,17 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li *ngIf="!authService.isAuthenticated()" class="nav-item">
-      <a class="nav-link" routerLink="/login">
+      <a class="nav-link" href="/login">
         <i class="fas fa-sign-in-alt"></i>
         Sign in
       </a>
     </li>
+    <li *ngIf="authService.isAuthenticated()" class="nav-item">
+      <a class="nav-link" routerLink="/profile"><i></i> {{ authService.user.username }} </a>
+    </li>
     <li class="nav-item">
       <a *ngIf="authService.isAuthenticated()" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"
-         role="button" (click)="signOut()">
+        role="button" (click)="signOut()">
         <i class="fas fa-sign-out-alt"></i>
         Sign out
       </a>

@@ -17,6 +17,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import {RivalryFormComponent} from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
 import {SiteRivalriesComponent} from './rivalries/site-rivalries/site-rivalries.component';
 import {ProfileComponent} from './profile/profile.component';
+import {ProfileFormComponent} from 'src/app/profile/profile-form/profile-form.component';
 import {EnrollmentsFormComponent} from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
 
 
@@ -32,6 +33,8 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'rivalries', component: SiteRivalriesComponent},
+      {path: 'profile', component: ProfileComponent},
+      {path: 'profile/form/:id', component: ProfileFormComponent}
     ]
   },
 
@@ -49,7 +52,8 @@ const routes: Routes = [
       {path: 'users', component: UsersComponent},
       {path: 'users/form', component: UserFormComponent},
       {path: 'users/form/:id', component: UserFormComponent},
-      {path: 'profile', component: ProfileComponent}
+      {path: 'profile', component: ProfileComponent},
+      {path: 'profile/form/:id', component: ProfileFormComponent}
     ]
   },
 
