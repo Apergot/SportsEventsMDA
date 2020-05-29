@@ -64,7 +64,7 @@ public class EnrollmentRestController {
             List<RivalryEnrollmentDTO> data = new ArrayList<>();
             for (Enrollment e:enrollmentService.retrieveAllUsersId(userid)) {
                 Rivalry tempRivalry = rivalriesEnrollmentService.findById(e.getRivalry_id());
-                data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentDate()));
+                data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentDate(), e.getId()));
             }
             boolean trigger = true;
             Rivalry rivalry = enrolledRivalryManager.findById(enrollment.getRivalry_id());
@@ -112,7 +112,7 @@ public class EnrollmentRestController {
         List<RivalryEnrollmentDTO> data = new ArrayList<>();
         for (Enrollment e:enrollmentService.retrieveAllUsersId(id)) {
             Rivalry tempRivalry = rivalriesEnrollmentService.findById(e.getRivalry_id());
-            data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentDate()));
+            data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentDate(), e.getId()));
         }
         return data;
     }
