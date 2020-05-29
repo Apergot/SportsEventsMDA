@@ -77,15 +77,17 @@ public class EnrollmentRestController {
                 createdEnrollment = enrollmentService.save(enrollment);
                 rivalry.setEnrolled(rivalry.getEnrolled() + 1);
                 enrolledRivalryManager.save(rivalry);
+                map.put("message", "User enrolled successfully!");
+                map.put("enrollment", createdEnrollment);
+                return new ResponseEntity<>(map, HttpStatus.CREATED);
             }
         }catch (DataAccessException e){
             map.put("message", "Error inserting into database");
             map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        map.put("message", "enrollment created successfully");
-        map.put("enrollment", createdEnrollment);
-        return new ResponseEntity<>(map, HttpStatus.CREATED);
+        map.put("message", "user is already enrolled");
+        return new ResponseEntity<>(map, HttpStatus.NOT_ACCEPTABLE);
     }
 
     @DeleteMapping("/enrollments/{id}")

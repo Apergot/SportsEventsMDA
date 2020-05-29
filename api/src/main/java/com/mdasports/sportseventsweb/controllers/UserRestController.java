@@ -83,7 +83,6 @@ public class UserRestController {
             String passwordBcrypt = null;
             for (int i = 0; i< 4; i++) {
                 passwordBcrypt = passwordEncoder.encode(password);
-                System.out.println(passwordBcrypt);
             }
             user.setPassword(passwordBcrypt);
             newUser = iAdminUsersService.save(user);
@@ -135,8 +134,8 @@ public class UserRestController {
 
         User updatedUser = null;
         try {
-            currentUser.setUsername(user.getUsername());
             currentUser.setPassword(user.getPassword());
+            currentUser.setUsername(user.getUsername());
             currentUser.setEnabled(user.isEnabled());
             currentUser.setFirstname(user.getFirstname());
             currentUser.setLastname(user.getLastname());
