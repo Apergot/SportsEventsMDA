@@ -84,7 +84,7 @@ public class EnrollmentRestController {
         map.put("message", "enrollment deleted successfully");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
-    @GetMapping("/enrollments/{id}")
+    @GetMapping("/enrollments/user/{id}")
     private List<RivalryEnrollmentDTO> getAllByUserId(@PathVariable Long id){
         List<RivalryEnrollmentDTO> data = new ArrayList<>();
         for (Enrollment e:enrollmentService.retrieveAllUsersId(id)) {
