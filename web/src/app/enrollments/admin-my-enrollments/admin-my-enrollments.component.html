@@ -14,5 +14,43 @@
   <!-- Main content -->
   <section class="content">
 
+    <div class="card border-primary mb-3">
+
+      <div class="card-header">
+        <button class="btn btn-rounded btn-primary" [routerLink]="['/rivalries']">Rivalries list</button>
+      </div>
+
+      <div class="card-body text-primary">
+
+        <div *ngIf="userEnrollments?.length==0" class="alert alert-info">
+          There are not enrollments!
+        </div>
+
+        <div class="table-responsive">
+          <table id="users_list_table" aria-describedby="user_list_title" class="table table-bordered table-striped"
+                 *ngIf="userEnrollments?.length>0">
+            <thead class="thead-dark">
+            <tr>
+              <th id="th_username">Rivalry name</th>
+              <th id="th_firstname">Rivalry date</th>
+              <th id="th_lastname">Enrollment date</th>
+              <th id="th_actions" class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userEnrollment of userEnrollments">
+              <td>{{userEnrollment.rivalryName}}</td>
+              <td>{{userEnrollment.rivalryDate}}</td>
+              <td>{{userEnrollment.enrollmentDate}}</td>
+              <td>
+                <button type="button" name="delete" (click)="delete(userEnrollment)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /.card -->
+
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->

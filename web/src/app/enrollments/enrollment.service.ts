@@ -6,6 +6,8 @@ import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
 import {Enrollment} from './enrollment';
 import {User} from '../users/user';
+import {Rivalry} from '../rivalries/rivalry';
+import {UserEnrollment} from './user-enrollment';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,13 @@ export class EnrollmentService {
       .pipe(map((response) => response as Enrollment[]));
   }
 
+  getUserEnrollments(): Observable<UserEnrollment[]> {
+    const urlEndPointUserEnrollment = 'http://localhost:8080/api/enrollments/users';
+    return this.http
+      .get(urlEndPointUserEnrollment, {headers: this.addAuthHeader()})
+      .pipe(map((response) => response as UserEnrollment[]));
+  }
+
   create(enrollment: Enrollment): Observable<Enrollment> {
     return this.http
       .post(this.urlEndPoint, enrollment, {headers: this.addAuthHeader()})
@@ -45,6 +54,18 @@ export class EnrollmentService {
 
           console.error(e.error.mensaje);
           swal.fire(e.error.mensaje, e.error.error, 'error');
+          return throwError(e);
+        })
+      );
+  }
+
+  delete(id: number): Observable<User> {
+    return this.http
+      .delete<User>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()})
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.message);
+          swal.fire(e.error.message, e.error.error, 'error');
           return throwError(e);
         })
       );
