@@ -34,7 +34,7 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent},
       {path: 'rivalries', component: SiteRivalriesComponent},
       {path: 'profile', component: ProfileComponent},
-      {path: 'profile/form', component: ProfileFormComponent}
+      {path: 'profile/form/:id', component: ProfileFormComponent}
     ]
   },
 
@@ -53,7 +53,7 @@ const routes: Routes = [
       {path: 'users/form', component: UserFormComponent},
       {path: 'users/form/:id', component: UserFormComponent},
       {path: 'profile', component: ProfileComponent},
-      {path: 'profile/form', component: ProfileFormComponent}
+      {path: 'profile/form/:id', component: ProfileFormComponent}
     ]
   },
 

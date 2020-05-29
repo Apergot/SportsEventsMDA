@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../users/user';
+import {Role} from '../../users/role';
 import {UserService} from 'src/app/users/user.service';
 import {Router, ActivatedRoute} from '@angular/router';
-
 import {AuthService} from '../../auth/auth.service';
 declare const toast: any;
 
-
-
 @Component({
-  selector: 'app-profile-form',
-  templateUrl: './profile-form.component.html',
-  
+  selector: 'app-user-form',
+  templateUrl: './profile-form.component.html'
 })
 export class ProfileFormComponent implements OnInit {
-  user: User = new User();
-  title;
+  user: User;
+  title = 'Update User';
 
   errors: string[];
+
+  roles: Role[] = [
+    {id: 1, name: 'ROLE_USER'},
+    {id: 2, name: 'ROLE_ADMIN'},
+  ];
 
   constructor(
     private userService: UserService,
@@ -25,10 +27,20 @@ export class ProfileFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {
+    this.user = new User();
   }
 
   ngOnInit(): void {
-    this.user = this.authService.user;
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const id = +params.get('id');
+      if (id) {
+        this.title = 'Update user';
+        this.userService.getUser(id).subscribe((user) => {
+          this.user = user;
+          console.log(user);
+        });
+      }
+    });
   }
 
   update() {
@@ -39,6 +51,7 @@ export class ProfileFormComponent implements OnInit {
           icon: 'success',
           title: `User has been updated successfully`
         });
+        
       },
       (err) => {
         this.errors = err.error.errors as string[];
@@ -52,5 +65,7 @@ export class ProfileFormComponent implements OnInit {
     );
   }
 
-
+  sessionUpdate(): void {
+    sessionStorage.removeItem('user');    
+  }
 }

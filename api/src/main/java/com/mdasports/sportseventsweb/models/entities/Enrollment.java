@@ -28,7 +28,7 @@ public class Enrollment implements Serializable {
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    private Date enrollmentdDate;
+    private Date enrollmentDate;
 
     public Long getId() {
         return id;
@@ -62,13 +62,14 @@ public class Enrollment implements Serializable {
         this.state = state;
     }
 
-    public Date getEnrollmentdDate() {
-        return enrollmentdDate;
+    public Date getEnrollmentDate() {
+        return enrollmentDate;
     }
 
-    public void setEnrollmentdDate(Date enrollmentdDate) {
-        this.enrollmentdDate = enrollmentdDate;
+    public void setEnrollmentDate(Date enrollmentDate) {
+        this.enrollmentDate = enrollmentDate;
     }
+
 
     private static final long serialVersionUID = 1L;
 

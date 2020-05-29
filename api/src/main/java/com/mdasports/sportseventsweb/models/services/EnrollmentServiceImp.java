@@ -45,4 +45,10 @@ public class EnrollmentServiceImp implements IEnrollmentService{
     public void remove(Enrollment enrollment) {
         enrollmentDao.delete(enrollment);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Enrollment> retrieveAllUsersId(Long id) {
+        return enrollmentDao.getEnrollmentsByUser_id(id);
+    }
 }

@@ -14,4 +14,5 @@ public interface IEnrollmentService {
     Enrollment findById(Long id);
     Enrollment save(Enrollment enrollment);
     void remove(Enrollment enrollment);
+    List<Enrollment> retrieveAllUsersId(Long id);
 }
