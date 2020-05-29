@@ -40,7 +40,7 @@
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
 
-            <a class="small-box-footer" [routerLink]="['/enrollments', rivalry.id]">
+            <a class="small-box-footer" *ngIf="isLogged()" [routerLink]="['/enrollments', rivalry.id]">
               Enrollment <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>

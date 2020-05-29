@@ -60,10 +60,20 @@ export class EnrollmentsFormComponent implements OnInit {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
-        toast().fire({
-          icon: 'error',
-          title: 'Server error: ' + err.status
-        });
+
+        if (err.status === 406) {
+          this.router.navigate(['rivalries']);
+          toast().fire({
+            icon: 'warning',
+            title: 'You are already enrolled'
+          });
+        } else {
+          toast().fire({
+            icon: 'error',
+            title: 'Server error:' + err.message
+          });
+        }
+
       }
     );
   }
