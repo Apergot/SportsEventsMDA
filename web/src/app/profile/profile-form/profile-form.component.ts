@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../users/user';
-import {Role} from '../../users/role';
 import {UserService} from 'src/app/users/user.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
+
 declare const toast: any;
 
 @Component({
-  selector: 'app-user-form',
+  selector: 'app-profile-form',
   templateUrl: './profile-form.component.html'
 })
 export class ProfileFormComponent implements OnInit {
@@ -15,11 +15,6 @@ export class ProfileFormComponent implements OnInit {
   title = 'Update User';
 
   errors: string[];
-
-  roles: Role[] = [
-    {id: 1, name: 'ROLE_USER'},
-    {id: 2, name: 'ROLE_ADMIN'},
-  ];
 
   constructor(
     private userService: UserService,
@@ -33,7 +28,6 @@ export class ProfileFormComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       const id = +params.get('id');
       if (id) {
-        this.title = 'Update user';
         this.userService.getUser(id).subscribe((user) => {
           this.user = user;
           console.log(user);
@@ -45,12 +39,12 @@ export class ProfileFormComponent implements OnInit {
   update() {
     this.userService.update(this.user).subscribe(
       () => {
-        this.router.navigate(['/profile']);
+        this.authService._user = this.user;
+        this.router.navigate(['/admin/profile']);
         toast().fire({
           icon: 'success',
-          title: `User has been updated successfully`
+          title: `Profile updated successfully`
         });
-        
       },
       (err) => {
         this.errors = err.error.errors as string[];
@@ -62,10 +56,6 @@ export class ProfileFormComponent implements OnInit {
         });
       }
     );
-    this.authService._user = this.user;
   }
 
-  sessionUpdate(): void {
-    sessionStorage.removeItem('user');    
-  }
 }
