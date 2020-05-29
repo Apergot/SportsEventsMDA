@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {EnrollmentService} from '../enrollment.service';
 import {UserEnrollment} from '../user-enrollment';
-import {User} from '../../users/user';
 import swal from 'sweetalert2';
+import {AuthService} from '../../auth/auth.service';
 
 declare const toast: any;
 
@@ -13,11 +13,13 @@ declare const toast: any;
 export class AdminMyEnrollmentsComponent implements OnInit {
   userEnrollments: UserEnrollment[];
 
-  constructor(private enrollmentService: EnrollmentService) {
+  constructor(private authService: AuthService, private enrollmentService: EnrollmentService) {
   }
 
   ngOnInit(): void {
-    this.enrollmentService.getUserEnrollments().subscribe((userEnrollments) => (this.userEnrollments = userEnrollments));
+    this.enrollmentService.getUserEnrollments(this.authService.user).subscribe(
+      (userEnrollments) => (this.userEnrollments = userEnrollments)
+    );
   }
 
   delete(userEnrollment: UserEnrollment): void {

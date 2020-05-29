@@ -35,10 +35,10 @@ export class EnrollmentService {
       .pipe(map((response) => response as Enrollment[]));
   }
 
-  getUserEnrollments(): Observable<UserEnrollment[]> {
-    const urlEndPointUserEnrollment = 'http://localhost:8080/api/enrollments/users';
+  getUserEnrollments(user: User): Observable<UserEnrollment[]> {
+    const urlEndPointUserEnrollment = 'http://localhost:8080/api/enrollments/user';
     return this.http
-      .get(urlEndPointUserEnrollment, {headers: this.addAuthHeader()})
+      .get(`${urlEndPointUserEnrollment}/${user.id}`, {headers: this.addAuthHeader()})
       .pipe(map((response) => response as UserEnrollment[]));
   }
 
