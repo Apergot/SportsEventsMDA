@@ -11,12 +11,12 @@ public class RivalryEnrollmentDTO {
     private Date enrollmentDate;
     private Long enrollment_id;
 
-    public RivalryEnrollmentDTO(String rivalryName, Date rivalryDate, Long user_id, Long rivalry_id, Date enrolmentDate, Long enrollment_id) {
+    public RivalryEnrollmentDTO(String rivalryName, Date rivalryDate, Long user_id, Long rivalry_id, Date enrollmentDate, Long enrollment_id) {
         this.rivalryName = rivalryName;
         this.rivalryDate = rivalryDate;
         this.user_id = user_id;
         this.rivalry_id = rivalry_id;
-        this.enrollmentDate = enrolmentDate;
+        this.enrollmentDate = enrollmentDate;
         this.enrollment_id = enrollment_id;
     }
 
@@ -52,12 +52,12 @@ public class RivalryEnrollmentDTO {
         this.rivalry_id = rivalry_id;
     }
 
-    public Date getEnrolmentDate() {
+    public Date getEnrollmentDate() {
         return enrollmentDate;
     }
 
-    public void setEnrolmentDate(Date enrolmentDate) {
-        this.enrollmentDate = enrolmentDate;
+    public void setEnrollmentDate(Date enrollmentDate) {
+        this.enrollmentDate = enrollmentDate;
     }
 
     public Long getEnrollment_id() {
