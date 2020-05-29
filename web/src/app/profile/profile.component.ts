@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   errors: string[];
 
   constructor(private authService: AuthService, private router: Router) {
-    this.user = new User();
+    
   }
 
   ngOnInit() {
