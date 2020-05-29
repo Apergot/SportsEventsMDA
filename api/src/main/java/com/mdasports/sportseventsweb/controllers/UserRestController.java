@@ -134,12 +134,6 @@ public class UserRestController {
 
         User updatedUser = null;
         try {
-            String password = user.getPassword();
-            String passwordBcrypt = null;
-            for (int i = 0; i< 4; i++) {
-                passwordBcrypt = passwordEncoder.encode(password);
-            }
-            user.setPassword(passwordBcrypt);
             currentUser.setPassword(user.getPassword());
             currentUser.setUsername(user.getUsername());
             currentUser.setEnabled(user.isEnabled());

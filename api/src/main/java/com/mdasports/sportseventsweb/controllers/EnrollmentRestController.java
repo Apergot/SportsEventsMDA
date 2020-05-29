@@ -87,7 +87,7 @@ public class EnrollmentRestController {
             return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         map.put("message", "user is already enrolled");
-        return new ResponseEntity<>(map, HttpStatus.LOCKED);
+        return new ResponseEntity<>(map, HttpStatus.NOT_ACCEPTABLE);
     }
 
     @DeleteMapping("/enrollments/{id}")
