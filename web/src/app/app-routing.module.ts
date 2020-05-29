@@ -19,6 +19,7 @@ import {SiteRivalriesComponent} from './rivalries/site-rivalries/site-rivalries.
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileFormComponent} from 'src/app/profile/profile-form/profile-form.component';
 import {EnrollmentsFormComponent} from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
+import {AdminMyEnrollmentsComponent} from './enrollments/admin-my-enrollments/admin-my-enrollments.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: 'my-enrollments', component: AdminMyEnrollmentsComponent},
       {path: 'rivalries', component: AdminRivalriesComponent},
       {path: 'rivalries/form', component: RivalryFormComponent},
       {path: 'rivalries/form/:id', component: RivalryFormComponent},

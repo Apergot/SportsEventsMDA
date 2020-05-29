@@ -21,12 +21,12 @@ function highlightCurrentPageInNav(){
     }
   }
 
-  console.log(highlightRoute);
+  // console.log(highlightRoute);
 
   // Add active class to the properly link
   $('#sidebar .nav-sidebar a[routerLink="/admin/dashboard"]').removeClass('active');
   $('#sidebar .nav-sidebar a[routerLink="/admin/' + highlightRoute + '"]').addClass('active');
-  console.log(highlightRoute);
+  // console.log(highlightRoute);
 
 }
 
