@@ -3,10 +3,7 @@ package com.mdasports.sportseventsweb.controllers;
 import com.mdasports.sportseventsweb.DTOs.RivalryEnrollmentDTO;
 import com.mdasports.sportseventsweb.models.entities.Enrollment;
 import com.mdasports.sportseventsweb.models.entities.Rivalry;
-import com.mdasports.sportseventsweb.models.services.IAdminRivalriesService;
-import com.mdasports.sportseventsweb.models.services.IEnrollmentService;
-import com.mdasports.sportseventsweb.models.services.RivalriesEnrollmentService;
-import com.mdasports.sportseventsweb.models.services.State;
+import com.mdasports.sportseventsweb.models.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
@@ -35,6 +32,9 @@ public class EnrollmentRestController {
     @Autowired
     private RivalriesEnrollmentService rivalriesEnrollmentService;
 
+    @Autowired
+    private EnrolledRivalryManager enrolledRivalryManager;
+
     @GetMapping("/enrollments")
     private List<Enrollment> index(){
         return enrollmentService.findAll();
@@ -60,6 +60,9 @@ public class EnrollmentRestController {
         }
         try{
             createdEnrollment = enrollmentService.save(enrollment);
+            Rivalry rivalry = enrolledRivalryManager.findById(enrollment.getRivalry_id());
+            rivalry.setEnrolled(rivalry.getEnrolled() + 1);
+            enrolledRivalryManager.save(rivalry);
         }catch (DataAccessException e){
             map.put("message", "Error inserting into database");
             map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
@@ -76,6 +79,9 @@ public class EnrollmentRestController {
         try{
             Enrollment enrollment = enrollmentService.findById(id);
             enrollmentService.remove(enrollment);
+            Rivalry rivalry = enrolledRivalryManager.findById(enrollment.getRivalry_id());
+            rivalry.setEnrolled(rivalry.getEnrolled() - 1);
+            enrolledRivalryManager.save(rivalry);
         }catch (DataAccessException e){
             map.put("message", "Error deleting enrollment");
             map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
@@ -89,7 +95,7 @@ public class EnrollmentRestController {
         List<RivalryEnrollmentDTO> data = new ArrayList<>();
         for (Enrollment e:enrollmentService.retrieveAllUsersId(id)) {
             Rivalry tempRivalry = rivalriesEnrollmentService.findById(e.getRivalry_id());
-            data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentdDate()));
+            data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentDate()));
         }
         return data;
     }

@@ -23,6 +23,8 @@ public class Rivalry implements Serializable {
 
     private int capacity;
 
+    private int enrolled = 0;
+
     @Temporal(TemporalType.DATE)
     private Date rivalrydate;
 
@@ -65,6 +67,14 @@ public class Rivalry implements Serializable {
     public String getDescription() { return description; }
 
     public void setDescription(String description){ this.description = description; }
+
+    public int getEnrolled() {
+        return enrolled;
+    }
+
+    public void setEnrolled(int enrolled) {
+        this.enrolled = enrolled;
+    }
 
     private static final long serialVersionUID = 1L;
 }
