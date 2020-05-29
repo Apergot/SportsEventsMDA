@@ -11,7 +11,8 @@ declare const toast: any;
 
 @Component({
   selector: 'app-enrollments-form',
-  templateUrl: './enrollments-form.component.html'
+  templateUrl: './enrollments-form.component.html',
+  styleUrls: ['./enrollments-form.component.css']
 })
 export class EnrollmentsFormComponent implements OnInit {
   rivalry: Rivalry = new Rivalry();
@@ -44,6 +45,8 @@ export class EnrollmentsFormComponent implements OnInit {
   }
 
   enroll() {
+    this.enrollment.rivalry_id = this.rivalry.id;
+    this.enrollment.user_id = this.user.id;
     console.log(this.enrollment);
     this.enrollmentService.create(this.enrollment).subscribe(
       () => {
@@ -57,10 +60,20 @@ export class EnrollmentsFormComponent implements OnInit {
         this.errors = err.error.errors as string[];
         console.error('Backend code error: ' + err.status);
         console.error(err.error.errors);
-        toast().fire({
-          icon: 'error',
-          title: 'Server error: ' + err.status
-        });
+
+        if (err.status === 406) {
+          this.router.navigate(['rivalries']);
+          toast().fire({
+            icon: 'warning',
+            title: 'You are already enrolled'
+          });
+        } else {
+          toast().fire({
+            icon: 'error',
+            title: 'Server error:' + err.message
+          });
+        }
+
       }
     );
   }

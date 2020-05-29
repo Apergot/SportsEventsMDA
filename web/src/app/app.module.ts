@@ -26,9 +26,10 @@ import { AdminRivalriesComponent } from './rivalries/admin-rivalries/admin-rival
 import { RivalryFormComponent } from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileFormComponent } from './profile/profile-form/profile-form.component';
 import { AdminEnrollmentsComponent } from './enrollments/admin-enrollments/admin-enrollments.component';
 import { EnrollmentsFormComponent } from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
-import { ProfileFormComponent } from './profile/profile-form/profile-form.component';
+import { AdminMyEnrollmentsComponent } from './enrollments/admin-my-enrollments/admin-my-enrollments.component';
 
 @NgModule({
   declarations: [
@@ -52,9 +53,10 @@ import { ProfileFormComponent } from './profile/profile-form/profile-form.compon
     AuthComponent,
     SiteRivalriesComponent,
     ProfileComponent,
+    ProfileFormComponent,
     AdminEnrollmentsComponent,
     EnrollmentsFormComponent,
-    ProfileFormComponent,
+    AdminMyEnrollmentsComponent,
   ],
   imports: [
     BrowserModule,
