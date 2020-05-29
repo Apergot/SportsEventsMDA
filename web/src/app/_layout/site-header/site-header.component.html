@@ -31,9 +31,6 @@
         <li *ngIf="authService.isAuthenticated()" class="nav-item">
           <a class="nav-link" routerLink="/admin/dashboard"><i class="nav-icon fas fa-tachometer-alt"></i> Dashboard</a>
         </li>
-        <li *ngIf="authService.isAuthenticated()" class="nav-item">
-          <a class="nav-link" routerLink="/profile"><i></i> {{ authService.user.username }} </a>
-        </li>
 
         <li *ngIf="!authService.isAuthenticated()" class="nav-item">
           <a class="nav-link" routerLink="/login">
@@ -41,12 +38,27 @@
             Sign in
           </a>
         </li>
-        <li class="nav-item">
-          <a *ngIf="authService.isAuthenticated()" class="nav-link" data-widget="control-sidebar" data-slide="true"
-             href="#" role="button" (click)="signOut()">
-            <i class="fas fa-sign-out-alt"></i>
-            Sign out
+
+        <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
+          <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+             class="nav-link dropdown-toggle">{{ authService.user.username }}
           </a>
+          <ul aria-labelledby="dropdownSubMenu1"
+              class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
+            <li>
+              <a *ngIf="authService.isAuthenticated()"
+                 class="nav-link" data-widget="control-sidebar" data-slide="true" routerLink="/admin/profile">
+                <i class="fas fa-user-circle"></i> My Profile
+              </a>
+            </li>
+            <li>
+              <a *ngIf="authService.isAuthenticated()"
+                 class="nav-link" data-widget="control-sidebar" data-slide="true"
+                 href="#" role="button" (click)="signOut()">
+                <i class="fas fa-sign-out-alt"></i> Sign out
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
