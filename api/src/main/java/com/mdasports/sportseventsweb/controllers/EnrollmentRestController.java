@@ -50,6 +50,7 @@ public class EnrollmentRestController {
 
         Enrollment createdEnrollment=null;
         Map<String, Object> map = new HashMap<>();
+
         if (result.hasErrors()) {
             List<String> errors = new ArrayList<>();
             for (FieldError err: result.getFieldErrors()) {
@@ -59,10 +60,24 @@ public class EnrollmentRestController {
             return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         }
         try{
-            createdEnrollment = enrollmentService.save(enrollment);
+            Long userid= enrollment.getUser_id();
+            List<RivalryEnrollmentDTO> data = new ArrayList<>();
+            for (Enrollment e:enrollmentService.retrieveAllUsersId(userid)) {
+                Rivalry tempRivalry = rivalriesEnrollmentService.findById(e.getRivalry_id());
+                data.add(new RivalryEnrollmentDTO(tempRivalry.getRivalryname(), tempRivalry.getRivalrydate(),e.getUser_id(), e.getRivalry_id(), e.getEnrollmentDate()));
+            }
+            boolean trigger = true;
             Rivalry rivalry = enrolledRivalryManager.findById(enrollment.getRivalry_id());
-            rivalry.setEnrolled(rivalry.getEnrolled() + 1);
-            enrolledRivalryManager.save(rivalry);
+            for (RivalryEnrollmentDTO e: data) {
+                if (e.getRivalry_id() == rivalry.getId()) {
+                    trigger = false;
+                }
+            }
+            if (trigger) {
+                createdEnrollment = enrollmentService.save(enrollment);
+                rivalry.setEnrolled(rivalry.getEnrolled() + 1);
+                enrolledRivalryManager.save(rivalry);
+            }
         }catch (DataAccessException e){
             map.put("message", "Error inserting into database");
             map.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
