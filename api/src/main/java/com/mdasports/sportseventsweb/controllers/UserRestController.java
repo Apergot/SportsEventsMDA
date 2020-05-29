@@ -111,6 +111,8 @@ public class UserRestController {
         map.put("message", "user deleted successfully");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @PutMapping("/users/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody User user, @PathVariable Long id, BindingResult result) {
 
