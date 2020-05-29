@@ -28,6 +28,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminEnrollmentsComponent } from './enrollments/admin-enrollments/admin-enrollments.component';
 import { EnrollmentsFormComponent } from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
+import { AdminMyEnrollmentsComponent } from './enrollments/admin-my-enrollments/admin-my-enrollments.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { EnrollmentsFormComponent } from './enrollments/site-enrollments/enrollm
     ProfileComponent,
     AdminEnrollmentsComponent,
     EnrollmentsFormComponent,
+    AdminMyEnrollmentsComponent,
   ],
   imports: [
     BrowserModule,

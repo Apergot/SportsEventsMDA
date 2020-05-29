@@ -5,6 +5,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
 import {Enrollment} from './enrollment';
+import {User} from '../users/user';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,12 @@ export class EnrollmentService {
       return this.httpHeaders.append('Authorization', 'Bearer ' + token);
     }
     return this.httpHeaders;
+  }
+
+  getEnrollments(): Observable<Enrollment[]> {
+    return this.http
+      .get(this.urlEndPoint, {headers: this.addAuthHeader()})
+      .pipe(map((response) => response as Enrollment[]));
   }
 
   create(enrollment: Enrollment): Observable<Enrollment> {
