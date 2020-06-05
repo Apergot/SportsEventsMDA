@@ -22,7 +22,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     //OAuth side routes security
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/rivalries").permitAll()
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.GET,"/api/rivalries","/api/contact").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/users", "/api/contact").permitAll()
                 .anyRequest().authenticated().and().cors().configurationSource(corsConfigurationSource());
     }
 

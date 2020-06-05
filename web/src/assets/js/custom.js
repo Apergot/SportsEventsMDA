@@ -8,7 +8,7 @@ function toast(){
 }
 
 function highlightCurrentPageInNav(){
-  const prefix = "/";
+  const prefix = "/admin/";
   // Split route
   let routeFromAdmin = location.pathname.split(prefix);
   let highlightRoute = routeFromAdmin[1];
@@ -21,10 +21,13 @@ function highlightCurrentPageInNav(){
     }
   }
 
+  // console.log(highlightRoute);
+
   // Add active class to the properly link
-  $('#sidebar .nav-sidebar a[href="/dashboard"]').removeClass('active');
-  $('#sidebar .nav-sidebar a[href="/' + highlightRoute + '"]').addClass('active');
-  console.log(highlightRoute);
+  $('#sidebar .nav-sidebar a[routerLink="/admin/dashboard"]').removeClass('active');
+  $('#sidebar .nav-sidebar a[routerLink="/admin/' + highlightRoute + '"]').addClass('active');
+  // console.log(highlightRoute);
+
 }
 
 

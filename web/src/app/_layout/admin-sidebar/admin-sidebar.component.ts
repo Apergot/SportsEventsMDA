@@ -12,6 +12,6 @@ export class AdminSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userDisplayName = this.authService.user.username;
+    this.userDisplayName = this.authService.user.firstname + ' ' + this.authService.user.lastname;
   }
 }

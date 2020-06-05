@@ -1,0 +1,227 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-sm-12">
+          <h1 class="m-0 text-dark">{{title}}</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container">
+
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body pb-0">
+          <div class="row d-flex align-items-stretch">
+            <!-- General Contact Form -->
+            <div class="col-md-12">
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">General contact form</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form #contactForm="ngForm">
+                  <div class="card-body">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                               [(ngModel)]="contact.name" #name="ngModel" required>
+                        <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                          <div *ngIf="name.errors.required">
+                            Name is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" placeholder="Enter your email"
+                               [(ngModel)]="contact.email" #email="ngModel" required>
+                        <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                          <div *ngIf="email.errors.required">
+                            Email is required
+                          </div>
+                          <div *ngIf="email.errors.pattern">
+                            Invalid email pattern
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                        <label for="subject">Subject</label>
+                        <select class="custom-select" id="subject" name="subject"
+                                [(ngModel)]="contact.subject" #subject="ngModel" required>
+                          <option>Create a new club</option>
+                          <option>Feedback</option>
+                          <option selected>Single contact</option>
+                          <option>Other</option>
+                        </select>
+                        <div class="alert-danger" *ngIf="subject.invalid && (subject.dirty || subject.touched)">
+                          <div *ngIf="subject.errors.required">
+                            Subject is required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                        <label>Message</label>
+                        <textarea class="form-control" rows="3" minlength="5" placeholder="Enter ..." name="message"
+                                  [(ngModel)]="contact.message" #message="ngModel" required></textarea>
+                        <div class="alert-danger" *ngIf="message.invalid && (message.dirty || message.touched)">
+                          <div *ngIf="message.errors.required">
+                            Message is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button class="btn btn-info float-right px-3" role="button" (click)='sendMessage()'
+                              [disabled]="!contactForm.form.valid">Send messsage</button>
+                    </div>
+                  </div><!-- /.card-body -->
+                </form>
+              </div>
+            </div>
+
+            <!-- Who we are -->
+            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch">
+              <div class="card bg-light">
+                <div class="card-header text-muted border-bottom-0">
+                  Computer engineer
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>Alejandro Perdomo</b></h2>
+                      <p class="text-muted text-sm"><b>About: </b> Full Stack / Software Specialist / SCRUM Manager
+                      </p>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> City:
+                          Address: Las Palmas de Gran Canaria, Spain
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                      <img src="assets/img/apergot.jpg" alt="" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="#" class="btn btn-sm bg-primary" target="_blank">
+                      Linked <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch">
+              <div class="card bg-light">
+                <div class="card-header text-muted border-bottom-0">
+                  Computer engineer
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>Diego Hawkins</b></h2>
+                      <p class="text-muted text-sm"><b>About: </b> Web Designer / Software Specialist</p>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> City:
+                          Address: Las Palmas de Gran Canaria, Spain
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                      <img src="assets/img/diegohawkins.jpg" alt="" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="https://www.linkedin.com/in/diego-hawkins-vargas" class="btn btn-sm bg-primary"
+                       target="_blank">
+                      Linked <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch">
+              <div class="card bg-light">
+                <div class="card-header text-muted border-bottom-0">
+                  Computer engineer
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>Juan Kevin Trujillo</b></h2>
+                      <p class="text-muted text-sm"><b>About: </b> Web Designer / TIC Specialist</p>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> City:
+                          Address: Las Palmas de Gran Canaria, Spain
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                      <img src="assets/img/juankevintr.jpg" alt="" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="https://juankevintrujillo.com" class="btn btn-sm bg-dark" target="_blank">
+                      <i class="fas fa-globe-europe"></i> Web
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch">
+              <div class="card bg-light">
+                <div class="card-header text-muted border-bottom-0">
+                  Computer engineer
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>Miguel Berciano</b></h2>
+                      <p class="text-muted text-sm"><b>About: </b> Web Designer / Software Specialist / SCRUM Manager
+                      </p>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> City:
+                          Address: Las Palmas de Gran Canaria, Spain
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                      <img src="assets/img/kainobr.jpg" alt="" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="#" class="btn btn-sm bg-primary" target="_blank">
+                      Linked <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /.card-body -->
+        <div class="card-footer"></div><!-- /.card-footer -->
+      </div>
+
+    </div><!-- /.container-fluid -->
+  </div><!-- /.content -->
+
+</div><!-- /.content-wrapper -->

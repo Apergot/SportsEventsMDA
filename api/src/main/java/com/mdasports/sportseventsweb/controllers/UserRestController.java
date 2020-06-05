@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class UserRestController {
     @Autowired
     private IAdminUsersService iAdminUsersService;
 
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/users")
     public List<User> index(){
@@ -40,7 +44,7 @@ public class UserRestController {
         return iAdminUsersService.findAll(pageable);
     }
 
-    @Secured({"ROLE_ADMIN"})
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/users/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){
         User user = null;
@@ -75,6 +79,12 @@ public class UserRestController {
         }
 
         try {
+            String password = user.getPassword();
+            String passwordBcrypt = null;
+            for (int i = 0; i< 4; i++) {
+                passwordBcrypt = passwordEncoder.encode(password);
+            }
+            user.setPassword(passwordBcrypt);
             newUser = iAdminUsersService.save(user);
         } catch (DataAccessException e) {
             map.put("message", "Error inserting into database");
@@ -100,6 +110,8 @@ public class UserRestController {
         map.put("message", "user deleted successfully");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @PutMapping("/users/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody User user, @PathVariable Long id, BindingResult result) {
 
@@ -122,8 +134,8 @@ public class UserRestController {
 
         User updatedUser = null;
         try {
-            currentUser.setUsername(user.getUsername());
             currentUser.setPassword(user.getPassword());
+            currentUser.setUsername(user.getUsername());
             currentUser.setEnabled(user.isEnabled());
             currentUser.setFirstname(user.getFirstname());
             currentUser.setLastname(user.getLastname());

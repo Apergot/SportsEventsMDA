@@ -84,7 +84,7 @@ export class UserService {
     return this.http.get<User>(`${this.urlEndPoint}/${id}`, {headers: this.addAuthHeader()}).pipe(
       catchError((e) => {
         console.error(e.error.mensaje);
-        swal.fire('Error al editar', e.error.mensaje, 'error');
+        swal.fire('Error updating the user', e.error.mensaje, 'error');
         return throwError(e);
       })
     );

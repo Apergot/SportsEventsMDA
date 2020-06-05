@@ -10,6 +10,8 @@ import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component
 import { SiteHeaderComponent } from './_layout/site-header/site-header.component';
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
 import { HomeComponent } from './home/home.component';
+import { SiteRivalriesComponent } from './rivalries/site-rivalries/site-rivalries.component';
+import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
@@ -20,9 +22,14 @@ import { AdminFooterComponent } from './_layout/admin-footer/admin-footer.compon
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
-import { RivalriesComponent } from './rivalries/rivalries.component';
-import { RivalryFormComponent } from './rivalries/rivalry-form/rivalry-form.component';
+import { AdminRivalriesComponent } from './rivalries/admin-rivalries/admin-rivalries.component';
+import { RivalryFormComponent } from './rivalries/admin-rivalries/rivalry-form/rivalry-form.component';
 import { AuthComponent } from './auth/auth.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileFormComponent } from './profile/profile-form/profile-form.component';
+import { AdminEnrollmentsComponent } from './enrollments/admin-enrollments/admin-enrollments.component';
+import { EnrollmentsFormComponent } from './enrollments/site-enrollments/enrollments-form/enrollments-form.component';
+import { AdminMyEnrollmentsComponent } from './enrollments/admin-my-enrollments/admin-my-enrollments.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +38,7 @@ import { AuthComponent } from './auth/auth.component';
     SiteHeaderComponent,
     SiteFooterComponent,
     HomeComponent,
+    ContactComponent,
     LoginComponent,
     RegisterComponent,
     AdminLayoutComponent,
@@ -40,9 +48,15 @@ import { AuthComponent } from './auth/auth.component';
     DashboardComponent,
     UsersComponent,
     UserFormComponent,
-    RivalriesComponent,
+    AdminRivalriesComponent,
     RivalryFormComponent,
     AuthComponent,
+    SiteRivalriesComponent,
+    ProfileComponent,
+    ProfileFormComponent,
+    AdminEnrollmentsComponent,
+    EnrollmentsFormComponent,
+    AdminMyEnrollmentsComponent,
   ],
   imports: [
     BrowserModule,

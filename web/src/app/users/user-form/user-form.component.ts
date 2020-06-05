@@ -3,7 +3,6 @@ import {User} from '../user';
 import {Role} from '../role';
 import {UserService} from '../user.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import swal from 'sweetalert2';
 
 declare const toast: any;
 
@@ -45,7 +44,7 @@ export class UserFormComponent implements OnInit {
   create() {
     this.userService.create(this.user).subscribe(
       () => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin/users']);
         toast().fire({
           icon: 'success',
           title: `User has been created successfully`
@@ -66,7 +65,7 @@ export class UserFormComponent implements OnInit {
   update() {
     this.userService.update(this.user).subscribe(
       () => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin/users']);
         toast().fire({
           icon: 'success',
           title: `User has been updated successfully`

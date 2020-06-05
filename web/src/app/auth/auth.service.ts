@@ -10,7 +10,7 @@ import {Role} from '../users/role';
 export class AuthService {
 
   // tslint:disable-next-line:variable-name
-  private _user: User;
+  public _user: User;
   // tslint:disable-next-line:variable-name
   private _token: string;
 
@@ -51,13 +51,22 @@ export class AuthService {
     params.set('grant_type', 'password');
     params.set('username', user.username);
     params.set('password', user.password);
-    console.log(params.toString());
+    // console.log(params.toString());
     return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
+  }
+
+  logout(): void {
+    this._token = null;
+    this._user = null;
+    sessionStorage.clear();
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
   }
 
   guardUser(accessToken: string): void {
     const payload = this.getDatasToken(accessToken);
     this._user = new User();
+    this._user.id = payload.user_id;
     this._user.firstname = payload.firstname;
     this._user.lastname = payload.lastname;
     this._user.email = payload.email;
@@ -87,11 +96,4 @@ export class AuthService {
     return this.user.roles.includes(role);
   }
 
-  logout(): void {
-    this._token = null;
-    this._user = null;
-    sessionStorage.clear();
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-  }
 }
